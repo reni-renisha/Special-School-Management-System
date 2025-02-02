@@ -18,10 +18,10 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#f7f7f7] relative overflow-hidden">
       {/* Animated background blobs */}
-      <div className="absolute top-0 -left-40 w-[600px] h-[600px] bg-[#bc95ff] rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-float" />
-      <div className="absolute -bottom-32 right-40 w-[600px] h-[600px] bg-[#988eff] rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-float animation-delay-3000" />
-      <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#9a91ff] rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-float animation-delay-5000" />
-      <div className="absolute top-0 -left-40 w-[600px] h-[600px] bg-[#c3a0ff] rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-delay-3000" />
+      <div className="absolute top-0 -left-40 w-[600px] h-[600px] bg-[#6366f1] rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-float" />
+      <div className="absolute -bottom-32 right-40 w-[600px] h-[600px] bg-[#8b5cf6] rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-float animation-delay-3000" />
+      <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#a855f7] rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-float animation-delay-5000" />
+      <div className="absolute top-0 -left-40 w-[600px] h-[600px] bg-[#6366f1] rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-delay-3000" />
       
       <div className="w-[450px] mx-4">
         <h1 className="text-3xl font-bold text-[#170F49] mb-4 text-center">
@@ -29,7 +29,7 @@ const LoginPage = () => {
         </h1>
         
         {/* Login container */}
-        <div className="relative bg-[#FFFFFF] rounded-3xl shadow-xl p-12">
+        <div className="relative bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-12 border border-white/20">
           <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
               <p className="text-red-500 text-sm mb-4">{error}</p>
@@ -49,7 +49,7 @@ const LoginPage = () => {
                 placeholder="Enter username here."
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full px-4 py-4 rounded-full border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#4A3AFF] transition-all placeholder:text-[#6F6C90]"
+                className="w-full px-4 py-4 rounded-full border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
               />
             </div>
             
@@ -67,14 +67,14 @@ const LoginPage = () => {
                 placeholder="Enter password here."
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-4 rounded-full border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#4A3AFF] transition-all placeholder:text-[#6F6C90]"
+                className="w-full px-4 py-4 rounded-full border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
               />
             </div>
             
             {/* Submit button */}
             <button
               type="submit"
-              className="w-full bg-[#4A3AFF] shadow-lg text-white py-4 rounded-full hover:bg-blue-700 transition-colors font-medium"
+              className="w-full bg-[#6366f1] shadow-lg text-white py-4 rounded-full hover:bg-[#4f46e5] transition-colors font-medium"
             >
               Sign in
             </button>
