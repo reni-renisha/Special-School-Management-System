@@ -18,10 +18,10 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#f7f7f7] relative overflow-hidden">
       {/* Animated background blobs */}
-      <div className="absolute top-0 -left-40 w-[600px] h-[600px] bg-[#6366f1] rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-float" />
-      <div className="absolute -bottom-32 right-40 w-[600px] h-[600px] bg-[#8b5cf6] rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-float animation-delay-3000" />
-      <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#a855f7] rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-float animation-delay-5000" />
-      <div className="absolute top-0 -left-40 w-[600px] h-[600px] bg-[#6366f1] rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-delay-3000" />
+      <div className="absolute top-0 -left-40 w-[600px] h-[500px] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float rainbow-blob" />
+      <div className="absolute -bottom-32 right-40 w-[600px] h-[600px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-3000" />
+      <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-5000" />
+      <div className="absolute top-0 -left-40 w-[500px] h-[600px] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float animation-delay-7000 rainbow-blob" />
       
       <div className="w-[450px] mx-4">
         <h1 className="text-3xl font-bold text-[#170F49] mb-4 text-center">
@@ -117,6 +117,29 @@ const LoginPage = () => {
         }
         .animation-delay-7000 {
           animation-delay: -15s;
+        }
+        .rainbow-blob {
+          background: conic-gradient(
+            from 0deg,
+            #ff0000,
+            #ff8000,
+            #ffff00,
+            #00ff00,
+            #00ffff,
+            #0000ff,
+            #8000ff,
+            #ff0080,
+            #ff0000
+          );
+          animation: float 15s infinite ease-in-out, spin 15s linear infinite;
+        }
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
         }
       `}</style>
     </div>
