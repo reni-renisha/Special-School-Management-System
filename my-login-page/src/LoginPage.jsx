@@ -18,13 +18,13 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#f7f7f7] relative overflow-hidden">
       {/* Animated background blobs */}
-      <div className="absolute top-0 -left-40 w-[600px] h-[500px] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float rainbow-blob" />
+      <div className="absolute top-0 -left-40 w-[600px] h-[500px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float" />
       <div className="absolute -bottom-32 right-40 w-[600px] h-[600px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-3000" />
       <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-5000" />
-      <div className="absolute top-0 -left-40 w-[500px] h-[600px] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float animation-delay-7000 rainbow-blob" />
+      <div className="absolute top-0 -left-40 w-[500px] h-[600px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float animation-delay-7000" />
       
       <div className="w-[450px] mx-4">
-        <h1 className="text-3xl font-bold text-[#170F49] mb-4 text-center">
+        <h1 className="text-3xl font-bold text-[#170F49] mb-4 text-center font-baskervville">
           Sign in to your account
         </h1>
         
@@ -49,7 +49,7 @@ const LoginPage = () => {
                 placeholder="Enter username here."
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full px-4 py-4 rounded-full border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
+                className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
               />
             </div>
             
@@ -67,14 +67,15 @@ const LoginPage = () => {
                 placeholder="Enter password here."
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-4 rounded-full border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
+                className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
               />
             </div>
             
             {/* Submit button */}
             <button
               type="submit"
-              className="w-full bg-[#6366f1] shadow-lg text-white py-4 rounded-full hover:bg-[#4f46e5] transition-colors font-medium"
+              className="w-full bg-[#6366f1] text-white py-4 rounded-2xl hover:bg-[#4f46e5] hover:-translate-y-1 transition-all duration-200 font-medium 
+              shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)]"
             >
               Sign in
             </button>
@@ -117,29 +118,6 @@ const LoginPage = () => {
         }
         .animation-delay-7000 {
           animation-delay: -15s;
-        }
-        .rainbow-blob {
-          background: conic-gradient(
-            from 0deg,
-            #ff0000,
-            #ff8000,
-            #ffff00,
-            #00ff00,
-            #00ffff,
-            #0000ff,
-            #8000ff,
-            #ff0080,
-            #ff0000
-          );
-          animation: float 15s infinite ease-in-out, spin 15s linear infinite;
-        }
-        @keyframes spin {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
         }
       `}</style>
     </div>
