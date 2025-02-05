@@ -53,7 +53,7 @@ const StudentPage = () => {
       
       <div className="w-[500px] mx-4">
         <h1 className="text-3xl font-bold text-[#170F49] mb-4 text-center font-baskervville">
-          Add Student
+          Add Teacher
         </h1>
         
         {/* Container with existing styling */}
@@ -174,7 +174,7 @@ const StudentPage = () => {
               className="w-full bg-[#6366f1] text-white py-4 rounded-2xl hover:bg-[#4f46e5] hover:-translate-y-1 transition-all duration-200 font-medium 
               shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)]"
             >
-              Add Student
+              Add Teacher
             </button>
           </form>
         </div>
