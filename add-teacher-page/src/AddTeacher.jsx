@@ -28,7 +28,7 @@ const AddTeacher = () => {
       {/* Back button */}
       <button
         onClick={() => window.history.back()}
-        className="absolute top-8 left-8 bg-white/30 backdrop-blur-xl rounded-2xl shadow-xl p-3 border border-white/20 hover:-translate-y-1 flex items-center gap-2 z-10"
+        className="absolute top-8 left-8 bg-white/30 backdrop-blur-xl rounded-2xl shadow-xl p-3 border border-white/20 hover:-translate-y-1 transition-all duration-200 flex items-center gap-2 z-10"
       >
         <svg 
           xmlns="http://www.w3.org/2000/svg" 

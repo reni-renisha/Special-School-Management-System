@@ -1,34 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
 const StudentPage = () => {
-  const [studentData, setStudentData] = useState({
-    fullName: "",
-    dateOfBirth: "",
-    gender: "",
-    phoneNumber: "",
-    email: "",
-    classAssigned: "",
-    divisionAssigned: "",
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setStudentData({ ...studentData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Student Data Submitted: ", studentData);
-  };
-
-  const selectClassName = `w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all appearance-none text-[#6F6C90] bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23170F49%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px_12px] bg-[center_right_1rem] bg-no-repeat pr-10`;
-
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#f7f7f7] relative overflow-hidden">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#f7f7f7] relative overflow-hidden py-20">
       {/* Back button */}
       <button
         onClick={() => window.history.back()}
-        className="absolute top-8 left-8 bg-[#6366f1] text-white px-6 py-4 rounded-2xl hover:bg-[#4f46e5] transition-all duration-200 font-medium shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 flex items-center gap-2 z-10"
+        className="absolute top-8 left-8 bg-white/30 backdrop-blur-xl rounded-2xl shadow-xl p-3 border border-white/20 hover:-translate-y-1 transition-all duration-200 flex items-center gap-2 z-10"
       >
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
@@ -51,132 +29,89 @@ const StudentPage = () => {
       <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-5000 z-0" />
       <div className="absolute top-0 -left-40 w-[500px] h-[600px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float animation-delay-7000 z-0" />
       
-      <div className="w-[500px] mx-4">
-        <h1 className="text-3xl font-bold text-[#170F49] mb-4 text-center font-baskervville">
-          Add Teacher
+      <div className="w-[90%] max-w-[1200px] mx-4 flex-1 flex flex-col justify-center">
+        <h1 className="text-3xl font-bold text-[#170F49] mb-8 text-center font-baskervville">
+          Student Details
         </h1>
         
-        {/* Container with existing styling */}
-        <div className="relative bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-12 border border-white/20">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2 w-full">
-              <label className="block text-sm font-medium text-[#170F49] ml-4">
-                Full Name
-              </label>
-              <input
-                type="text"
-                name="fullName"
-                value={studentData.fullName}
-                onChange={handleInputChange}
-                placeholder="Enter your Name"
-                className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
-                required
-              />
-            </div>
-
-            <div className="flex gap-4">
-              <div className="flex-1 space-y-2">
-                <label className="block text-sm font-medium text-[#170F49] ml-4">
-                  Date of Birth
-                </label>
-                <input
-                  type="date"
-                  name="dateOfBirth"
-                  value={studentData.dateOfBirth}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all text-[#6F6C90]"
-                  required
-                />
-              </div>
-              <div className="flex-1 space-y-2">
-                <label className="block text-sm font-medium text-[#170F49] ml-4">
-                  Gender
-                </label>
-                <select
-                  name="gender"
-                  value={studentData.gender}
-                  onChange={handleInputChange}
-                  className={selectClassName}
-                  required
-                >
-                  <option value="">Select Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
+        {/* Container with adjusted padding */}
+        <div className="relative bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-8 md:p-12 border border-white/20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {/* Basic Information Section */}
+            <div className="col-span-full">
+              <h2 className="text-xl font-semibold text-[#170F49] mb-4">Basic Information</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 p-4 md:p-6 bg-white/50 rounded-2xl">
+                <div>
+                  <p className="text-sm text-[#6F6C90]">Full Name</p>
+                  <p className="text-[#170F49] font-medium">John Doe</p>
+                </div>
+                <div>
+                  <p className="text-sm text-[#6F6C90]">Student ID</p>
+                  <p className="text-[#170F49] font-medium">#STU2024001</p>
+                </div>
+                <div>
+                  <p className="text-sm text-[#6F6C90]">Date of Birth</p>
+                  <p className="text-[#170F49] font-medium">15 March 2010</p>
+                </div>
+                <div>
+                  <p className="text-sm text-[#6F6C90]">Gender</p>
+                  <p className="text-[#170F49] font-medium">Male</p>
+                </div>
               </div>
             </div>
 
-            <div className="space-y-2 w-full">
-              <label className="block text-sm font-medium text-[#170F49] ml-4">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                name="phoneNumber"
-                value={studentData.phoneNumber}
-                onChange={handleInputChange}
-                placeholder="Enter Phone Number"
-                className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
-                required
-              />
-            </div>
-
-            <div className="space-y-2 w-full">
-              <label className="block text-sm font-medium text-[#170F49] ml-4">
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={studentData.email}
-                onChange={handleInputChange}
-                placeholder="Enter your Email"
-                className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
-                required
-              />
-            </div>
-
-            <div className="space-y-2 w-full">
-              <label className="block text-sm font-medium text-[#170F49] ml-4">
-                Class Assigned
-              </label>
-              <div className="flex gap-2">
-                <select
-                  name="classAssigned"
-                  value={studentData.classAssigned}
-                  onChange={handleInputChange}
-                  className={selectClassName}
-                  required
-                >
-                  <option value="">Class</option>
-                  {Array.from({ length: 10 }, (_, i) => (
-                    <option key={i + 1} value={i + 1}>{`Class ${i + 1}`}</option>
-                  ))}
-                </select>
-                <select
-                  name="divisionAssigned"
-                  value={studentData.divisionAssigned}
-                  onChange={handleInputChange}
-                  className={selectClassName}
-                  required
-                >
-                  <option value="">Division</option>
-                  {["A", "B", "C", "D"].map((division) => (
-                    <option key={division} value={division}>{division}</option>
-                  ))}
-                </select>
+            {/* Contact Information Section */}
+            <div className="col-span-full">
+              <h2 className="text-xl font-semibold text-[#170F49] mb-4">Contact Information</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-white/50 rounded-2xl">
+                <div>
+                  <p className="text-sm text-[#6F6C90]">Phone Number</p>
+                  <p className="text-[#170F49] font-medium">+1 234 567 8900</p>
+                </div>
+                <div>
+                  <p className="text-sm text-[#6F6C90]">Email</p>
+                  <p className="text-[#170F49] font-medium">john.doe@example.com</p>
+                </div>
+                <div>
+                  <p className="text-sm text-[#6F6C90]">Address</p>
+                  <p className="text-[#170F49] font-medium">123 School Street, City</p>
+                </div>
               </div>
             </div>
 
-            <button
-              type="submit"
-              className="w-full bg-[#6366f1] text-white py-4 rounded-2xl hover:bg-[#4f46e5] hover:-translate-y-1 transition-all duration-200 font-medium 
-              shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)]"
-            >
-              Add Teacher
+            {/* Academic Information Section */}
+            <div className="col-span-full">
+              <h2 className="text-xl font-semibold text-[#170F49] mb-4">Academic Information</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-white/50 rounded-2xl">
+                <div>
+                  <p className="text-sm text-[#6F6C90]">Class</p>
+                  <p className="text-[#170F49] font-medium">Class 8</p>
+                </div>
+                <div>
+                  <p className="text-sm text-[#6F6C90]">Division</p>
+                  <p className="text-[#170F49] font-medium">Division A</p>
+                </div>
+                <div>
+                  <p className="text-sm text-[#6F6C90]">Roll Number</p>
+                  <p className="text-[#170F49] font-medium">24</p>
+                </div>
+                <div>
+                  <p className="text-sm text-[#6F6C90]">Academic Year</p>
+                  <p className="text-[#170F49] font-medium">2023-2024</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Buttons with adjusted margin */}
+          <div className="flex gap-4 mt-6 md:mt-8">
+            <button className="flex-1 bg-[#6366f1] text-white py-4 rounded-2xl hover:bg-[#4f46e5] hover:-translate-y-1 transition-all duration-200 font-medium shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)]">
+              Edit Details
             </button>
-          </form>
+            <button className="flex-1  bg-white/30 backdrop-blur-xl rounded-2xl shadow-xl p-3 border border-white/20 hover:-translate-y-1 transition-all font-medium duration-200">
+              Download PDF
+            </button>
+          </div>
         </div>
       </div>
 
