@@ -16,20 +16,20 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#f7f7f7] relative overflow-hidden">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#f7f7f7] relative overflow-hidden py-20">
       {/* Animated background blobs */}
       <div className="absolute top-0 -left-40 w-[600px] h-[500px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float" />
       <div className="absolute -bottom-32 right-40 w-[600px] h-[600px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-3000" />
       <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-5000" />
       <div className="absolute top-0 -left-40 w-[500px] h-[600px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float animation-delay-7000" />
       
-      <div className="w-[450px] mx-4">
-        <h1 className="text-3xl font-bold text-[#170F49] mb-4 text-center font-baskervville">
+      <div className="w-[90%] max-w-[1200px] mx-4 flex-1 flex flex-col justify-center">
+        <h1 className="text-3xl font-bold text-[#170F49] mb-8 text-center font-baskervville">
           Sign in to your account
         </h1>
         
         {/* Login container */}
-        <div className="relative bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-12 border border-white/20">
+        <div className="relative bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-8 md:p-12 border border-white/20 max-w-[450px] mx-auto w-full">
           <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
               <p className="text-red-500 text-sm mb-4">{error}</p>

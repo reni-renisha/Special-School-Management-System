@@ -109,7 +109,7 @@ const StudentPage = () => {
               Edit Details
             </button>
             <button className="flex-1  bg-white/30 backdrop-blur-xl rounded-2xl shadow-xl p-3 border border-white/20 hover:-translate-y-1 transition-all font-medium duration-200">
-              Download PDF
+              Download Profile
             </button>
           </div>
         </div>

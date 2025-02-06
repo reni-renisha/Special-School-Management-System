@@ -24,7 +24,7 @@ const AddTeacher = () => {
   const selectClassName = `w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all appearance-none text-[#6F6C90] bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23170F49%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px_12px] bg-[center_right_1rem] bg-no-repeat pr-10`;
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#f7f7f7] relative overflow-hidden">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#f7f7f7] relative overflow-hidden py-20">
       {/* Back button */}
       <button
         onClick={() => window.history.back()}
@@ -51,13 +51,13 @@ const AddTeacher = () => {
       <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-5000 z-0" />
       <div className="absolute top-0 -left-40 w-[500px] h-[600px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float animation-delay-7000 z-0" />
       
-      <div className="w-[500px] mx-4">
-        <h1 className="text-3xl font-bold text-[#170F49] mb-4 text-center font-baskervville">
+      <div className="w-[90%] max-w-[1200px] mx-4 flex-1 flex flex-col justify-center">
+        <h1 className="text-3xl font-bold text-[#170F49] mb-8 text-center font-baskervville">
           Add Teacher
         </h1>
         
-        {/* Container with existing styling */}
-        <div className="relative bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-12 border border-white/20">
+        {/* Container with adjusted padding */}
+        <div className="relative bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-8 md:p-12 border border-white/20 max-w-[600px] mx-auto w-full">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2 w-full">
               <label className="block text-sm font-medium text-[#170F49] ml-4">
