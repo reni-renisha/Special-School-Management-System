@@ -7,13 +7,14 @@ const LoginPage = () => {
 
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#f7f7f7] relative overflow-hidden">
-      {/* Animated background blobs */}
-      <div className="absolute top-0 -left-40 w-[600px] h-[500px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float" />
-      <div className="absolute -bottom-32 right-40 w-[600px] h-[600px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-3000" />
-      <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-5000" />
-      <div className="absolute top-0 -left-40 w-[500px] h-[600px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float animation-delay-7000" />
+      {/* Animated background blobs - added z-index-0 */}
+      <div className="absolute top-0 -left-40 w-[600px] h-[500px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float z-0" />
+      <div className="absolute -bottom-32 right-40 w-[600px] h-[600px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-3000 z-0" />
+      <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-5000 z-0" />
+      <div className="absolute top-0 -left-40 w-[500px] h-[600px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float animation-delay-7000 z-0" />
       
-      <div className="w-full max-w-[1199px] mx-4 px-4 sm:px-6 lg:px-8">
+      {/* Main content - added z-10 */}
+      <div className="w-full max-w-[1199px] mx-4 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex justify-between items-center mb-4">
           {/* Filter Options on left - moved right by 5px */}
           <div className="flex items-center gap-2 ml-5">
@@ -29,7 +30,7 @@ const LoginPage = () => {
                 id="filterType"
                 value={filterOption}
                 onChange={(e) => setFilterOption(e.target.value)}
-                className="px-4 py-2 rounded-full border bg-white shadow-lg hover:shadow-xl hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 text-gray-600 hover:text-gray-900"
+                className="px-4 pr-8 py-2 rounded-full border bg-white shadow-lg hover:shadow-xl hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 text-gray-600 hover:text-gray-900 appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%236b7280%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-[length:20px] bg-[center_right_0.5rem] bg-no-repeat"
               >
                 <option value="all">All Students</option>
                 <option value="class">Class</option>
@@ -47,7 +48,7 @@ const LoginPage = () => {
                 </label>
                 <select
                   id="classFilter"
-                  className="px-4 py-2 rounded-full border bg-white shadow-lg hover:shadow-xl hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 text-gray-600 hover:text-gray-900"
+                  className="px-4 pr-8 py-2 rounded-full border bg-white shadow-lg hover:shadow-xl hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 text-gray-600 hover:text-gray-900 appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%236b7280%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-[length:20px] bg-[center_right_0.5rem] bg-no-repeat"
                 >
                   <option value="all">All Classes</option>
                   <option value="X-A">X-A</option>
