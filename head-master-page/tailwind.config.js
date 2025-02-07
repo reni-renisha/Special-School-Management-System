@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['DM Sans', 'sans-serif'],
+        baskervville: ['Baskervville', 'serif'],
       },
     },
   },
