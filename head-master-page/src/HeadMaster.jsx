@@ -62,7 +62,7 @@ const HeadMaster = () => {
             <div className="relative w-full md:w-[443px] mx-auto">
               <input
                 type="text"
-                placeholder="Search students..."
+                placeholder={`Search ${activeTab === "students" ? "students" : "teachers"}...`}
                 className="w-full pl-10 pr-4 py-3 rounded-xl border bg-white/30 backdrop-blur-sm shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 placeholder:text-gray-400 hover:placeholder:text-gray-600"
               />
               <svg
@@ -385,10 +385,10 @@ const HeadMaster = () => {
               {/* Filter and Search Section */}
               <div className="flex justify-between items-center mb-8 px-4">
                 {/* Search Bar */}
-                <div className="relative">
+                <div id="search-container" className="relative">
                   <input
                     type="text"
-                    placeholder="Search Teachers..."
+                    placeholder="Search teachers..."
                     className="w-[443px] pl-10 pr-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 placeholder:text-gray-400 hover:placeholder:text-gray-600"
                   />
                   <svg
