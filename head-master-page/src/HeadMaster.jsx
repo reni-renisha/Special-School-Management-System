@@ -5,6 +5,7 @@ const HeadMaster = () => {
   const [selectedClass, setSelectedClass] = useState("all");
   const [isSearchFloating, setIsSearchFloating] = useState(false);
   const [activeTab, setActiveTab] = useState("students");
+  const [showFilterDropdown, setShowFilterDropdown] = useState(false);
 
   // Add scroll event listener
   useEffect(() => {
@@ -26,7 +27,7 @@ const HeadMaster = () => {
       {/* Logout Button */}
       <div className="fixed top-6 right-6 z-50">
         <button
-          className="px-6 py-2 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105 flex items-center gap-2"
+          className="px-6 py-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105 flex items-center gap-2"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +63,7 @@ const HeadMaster = () => {
               <input
                 type="text"
                 placeholder="Search students..."
-                className="w-full pl-10 pr-4 py-2 rounded-xl border bg-white/30 backdrop-blur-sm shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 placeholder:text-gray-400 hover:placeholder:text-gray-600"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border bg-white/30 backdrop-blur-sm shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 placeholder:text-gray-400 hover:placeholder:text-gray-600"
               />
               <svg
                 className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
@@ -90,23 +91,62 @@ const HeadMaster = () => {
       <div className="w-[90%] max-w-[1200px] mx-4 z-10">
         {/* Tabs */}
         <div className="flex justify-center mb-8">
-          <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-2 inline-flex gap-2 shadow-lg">
+          <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-2 inline-flex gap-2 shadow-lg relative">
+            {/* Active Tab Background */}
+            <div
+              className="absolute h-[calc(100%-8px)] top-[4px] transition-all duration-300 ease-in-out rounded-xl bg-[#6366f1] shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)]"
+              style={{
+                left: activeTab === "students" ? "4px" : "50%",
+                width: "calc(50% - 6px)",
+                transform: `scale(${1})`,
+                opacity: 0.95,
+                backdropFilter: 'blur(4px)',
+                background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
+              }}
+            >
+              {/* Subtle glow effect */}
+              <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 hover:opacity-100 transition-opacity duration-300" />
+              
+              {/* Animated border */}
+              <div className="absolute inset-0 rounded-xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" 
+                     style={{
+                       backgroundSize: '200% 100%',
+                       animation: 'shimmer 2s infinite linear'
+                     }}
+                />
+              </div>
+
+              {/* Animated particles */}
+              <div className="absolute inset-0 overflow-hidden rounded-xl">
+                <div className="particle-1"></div>
+                <div className="particle-2"></div>
+                <div className="particle-3"></div>
+              </div>
+
+              {/* Pulse effect */}
+              <div className="absolute inset-0 rounded-xl animate-pulse-ring"></div>
+            </div>
+            
+            {/* Students Tab */}
             <button
               onClick={() => setActiveTab("students")}
-              className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 relative z-10 ${
                 activeTab === "students"
-                  ? "bg-[#6366f1] text-white shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)]"
-                  : "text-[#170F49] hover:bg-white/50"
+                  ? "text-white scale-105"
+                  : "text-[#170F49] hover:text-[#6366f1]"
               }`}
             >
               Students List
             </button>
+            
+            {/* Teachers Tab */}
             <button
               onClick={() => setActiveTab("teachers")}
-              className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 relative z-10 ${
                 activeTab === "teachers"
-                  ? "bg-[#6366f1] text-white shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)]"
-                  : "text-[#170F49] hover:bg-white/50"
+                  ? "text-white scale-105"
+                  : "text-[#170F49] hover:text-[#6366f1]"
               }`}
             >
               Teachers List
@@ -119,54 +159,13 @@ const HeadMaster = () => {
           {activeTab === "students" ? (
             <>
               {/* Filter and Search Section */}
-              <div className="flex justify-between items-center mb-8">
-                {/* Filter Options on left */}
-                <div className="flex items-center gap-2">
-                  {/* Filter Options */}
-                  <div className="flex items-center gap-2">
-                    <label 
-                      htmlFor="filterType" 
-                      className="text-sm font-medium text-[#170F49]"
-                    >
-                      Filter by
-                    </label>
-                    <select
-                      id="filterType"
-                      value={filterOption}
-                      onChange={(e) => setFilterOption(e.target.value)}
-                      className="px-4 pr-8 py-2 rounded-xl border bg-white shadow-lg hover:shadow-xl hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 text-gray-600 hover:text-gray-900 appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%236b7280%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-[length:20px] bg-[center_right_0.5rem] bg-no-repeat"
-                    >
-                      <option value="all">All Students</option>
-                      <option value="class">Class</option>
-                    </select>
-                  </div>
-
-                  {filterOption === 'class' && (
-                    <div className="flex items-center gap-2">
-                      <label 
-                        htmlFor="classFilter" 
-                        className="text-sm font-medium text-[#170F49]"
-                      >
-                        Class
-                      </label>
-                      <select
-                        id="classFilter"
-                        className="px-4 pr-8 py-2 rounded-xl border bg-white shadow-lg hover:shadow-xl hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 text-gray-600 hover:text-gray-900 appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%236b7280%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-[length:20px] bg-[center_right_0.5rem] bg-no-repeat"
-                      >
-                        <option value="all">All Classes</option>
-                        <option value="X-A">X-A</option>
-                        <option value="X-B">X-B</option>
-                        <option value="X-C">X-C</option>
-                      </select>
-                    </div>
-                  )}
-                </div>
-                {/* Original Search Bar */}
+              <div className="flex justify-between items-center mb-8 px-4">
+                {/* Search Bar */}
                 <div id="search-container" className="relative">
                   <input
                     type="text"
                     placeholder="Search students..."
-                    className="pl-10 pr-4 py-2 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all w-[443px] duration-300 placeholder:text-gray-400 hover:placeholder:text-gray-600"
+                    className="w-[443px] pl-10 pr-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 placeholder:text-gray-400 hover:placeholder:text-gray-600"
                   />
                   <svg
                     className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
@@ -182,19 +181,71 @@ const HeadMaster = () => {
                   </svg>
                 </div>
 
-                {/* Add Student Button on right */}
-                <button
-                  className="px-6 py-2 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105 flex items-center gap-2">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    className="h-5 w-5" 
-                    viewBox="0 0 20 20" 
-                    fill="currentColor"
-                  >
-                    <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
-                  </svg>
-                  Add Student
-                </button>
+                <div className="flex items-center gap-3">
+                  {/* Add Student Button */}
+                  <button className="px-6 py-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105 flex items-center gap-2">
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      className="h-5 w-5" 
+                      viewBox="0 0 20 20" 
+                      fill="currentColor"
+                    >
+                      <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+                    </svg>
+                    Add Student
+                  </button>
+
+                  {/* Filter Button with Dropdown */}
+                  <div className="relative">
+                    <button 
+                      onClick={() => setShowFilterDropdown(!showFilterDropdown)}
+                      className="p-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105"
+                    >
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        className="h-5 w-5" 
+                        viewBox="0 0 20 20" 
+                        fill="currentColor"
+                      >
+                        <path fillRule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clipRule="evenodd" />
+                      </svg>
+                    </button>
+
+                    {/* Filter Dropdown Menu */}
+                    {showFilterDropdown && (
+                      <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg overflow-hidden z-50">
+                        <div className="p-2 space-y-2">
+                          <select
+                            value={filterOption}
+                            onChange={(e) => {
+                              setFilterOption(e.target.value);
+                            }}
+                            className="w-full px-4 py-2.5 text-sm text-[#170F49] bg-white rounded-lg border border-gray-200 hover:border-[#6366f1] focus:outline-none focus:border-[#6366f1] transition-all duration-200"
+                          >
+                            <option value="all">All Students</option>
+                            <option value="class">Class</option>
+                          </select>
+                          
+                          {filterOption === 'class' && (
+                            <select
+                              value={selectedClass}
+                              onChange={(e) => {
+                                setSelectedClass(e.target.value);
+                                setShowFilterDropdown(false);
+                              }}
+                              className="w-full px-4 py-2.5 text-sm text-[#170F49] bg-white rounded-lg border border-gray-200 hover:border-[#6366f1] focus:outline-none focus:border-[#6366f1] transition-all duration-200"
+                            >
+                              <option value="all">All Classes</option>
+                              <option value="X-A">X-A</option>
+                              <option value="X-B">X-B</option>
+                              <option value="X-C">X-C</option>
+                            </select>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
               
               {/* Student List */}
@@ -214,7 +265,7 @@ const HeadMaster = () => {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold text-[#170F49]">Malavika</h3>
-                      <div className="space-y-1 mt-2">
+                      <div className="space-y-1">
                         <p className="text-sm text-[#6F6C8F]">
                           <span className="font-medium">Class:</span> X-A
                         </p>
@@ -246,7 +297,7 @@ const HeadMaster = () => {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold text-[#170F49]">Renisha</h3>
-                      <div className="space-y-1 mt-2">
+                      <div className="space-y-1">
                         <p className="text-sm text-[#6F6C8F]">
                           <span className="font-medium">Class:</span> X-B
                         </p>
@@ -278,7 +329,7 @@ const HeadMaster = () => {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold text-[#170F49]">Lydia</h3>
-                      <div className="space-y-1 mt-2">
+                      <div className="space-y-1">
                         <p className="text-sm text-[#6F6C8F]">
                           <span className="font-medium">Class:</span> X-C
                         </p>
@@ -310,7 +361,7 @@ const HeadMaster = () => {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold text-[#170F49]">Sreedhanya</h3>
-                      <div className="space-y-1 mt-2">
+                      <div className="space-y-1">
                         <p className="text-sm text-[#6F6C8F]">
                           <span className="font-medium">Class:</span> X-A
                         </p>
@@ -332,13 +383,13 @@ const HeadMaster = () => {
             <>
               {/* Teachers List Content */}
               {/* Filter and Search Section */}
-              <div className="flex justify-between items-center mb-8">
+              <div className="flex justify-between items-center mb-8 px-4">
                 {/* Search Bar */}
-                <div className="relative flex-1 max-w-[443px]">
+                <div className="relative">
                   <input
                     type="text"
-                    placeholder="Search teachers..."
-                    className="w-full pl-10 pr-4 py-2 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 placeholder:text-gray-400 hover:placeholder:text-gray-600"
+                    placeholder="Search Teachers..."
+                    className="w-[443px] pl-10 pr-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 placeholder:text-gray-400 hover:placeholder:text-gray-600"
                   />
                   <svg
                     className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
@@ -355,7 +406,7 @@ const HeadMaster = () => {
                 </div>
 
                 {/* Add Teacher Button */}
-                <button className="px-6 py-2 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105 flex items-center gap-2">
+                <button className="px-6 py-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105 flex items-center gap-2">
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
                     className="h-5 w-5" 
@@ -370,19 +421,48 @@ const HeadMaster = () => {
 
               {/* Teachers List */}
               <div className="grid grid-cols-1 gap-4 px-4">
-                {/* Example Teacher Card */}
+                {/*Teacher Card 1*/}
                 <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
                   <div className="flex items-center space-x-4 text-[#170F49]">
                     <div className="w-16 h-16 rounded-lg overflow-hidden">
                       <img 
-                        src="https://eu.ui-avatars.com/api/?name=John+Doe&size=250" 
+                        src="https://eu.ui-avatars.com/api/?name=Arjun+Jayakumar&size=250" 
                         alt="Teacher"
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-[#170F49]">John Doe</h3>
-                      <div className="space-y-1 mt-2">
+                      <h3 className="text-lg font-semibold text-[#170F49]">Arjun Jayakumar</h3>
+                      <div className="space-y-1">
+                        <p className="text-sm text-[#6F6C8F]">
+                          <span className="font-medium">Subject:</span> AI/ML
+                        </p>
+                        <p className="text-sm text-[#6F6C8F]">
+                          <span className="font-medium">Class Assigned:</span> X-B
+
+                        </p>
+                      </div>
+                    </div>
+                    <button className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                {/*Teacher Card 2*/}
+                <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
+                  <div className="flex items-center space-x-4 text-[#170F49]">
+                    <div className="w-16 h-16 rounded-lg overflow-hidden">
+                      <img 
+                        src="https://eu.ui-avatars.com/api/?name=Aditya+S&size=250" 
+                        alt="Teacher"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-[#170F49]">Aditya S Nair</h3>
+                      <div className="space-y-1">
                         <p className="text-sm text-[#6F6C8F]">
                           <span className="font-medium">Subject:</span> Mathematics
                         </p>
@@ -398,8 +478,63 @@ const HeadMaster = () => {
                     </button>
                   </div>
                 </div>
+                {/*Teacher Card 3*/}
+                <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
+                  <div className="flex items-center space-x-4 text-[#170F49]">
+                    <div className="w-16 h-16 rounded-lg overflow-hidden">
+                      <img 
+                        src="https://eu.ui-avatars.com/api/?name=Abhiram+Krishna&size=250" 
+                        alt="Teacher"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-[#170F49]">Abhiram Krishna</h3>
+                      <div className="space-y-1">
+                        <p className="text-sm text-[#6F6C8F]">
+                          <span className="font-medium">Subject:</span> Not Mathematics
+                        </p>
+                        <p className="text-sm text-[#6F6C8F]">
+                          <span className="font-medium">Class Teacher:</span> X-A
+                        </p>
+                      </div>
+                    </div>
+                    <button className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                {/*Teacher Card 4*/}
+                <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
+                  <div className="flex items-center space-x-4 text-[#170F49]">
+                    <div className="w-16 h-16 rounded-lg overflow-hidden">
+                      <img 
+                        src="https://eu.ui-avatars.com/api/?name=Faheem+Mohammed&size=250" 
+                        alt="Teacher"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-[#170F49]">Faheem Mohammed</h3>
+                      <div className="space-y-1">
+                        <p className="text-sm text-[#6F6C8F]">
+                          <span className="font-medium">Subject:</span> Cars
 
-                {/* Add more teacher cards here */}
+                        </p>
+                        <p className="text-sm text-[#6F6C8F]">
+                          <span className="font-medium">Class Teacher:</span> X-A
+                        </p>
+                      </div>
+                    </div>
+                    <button className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
               </div>
             </>
           )}
@@ -483,6 +618,62 @@ const HeadMaster = () => {
         .scrollbar-thin {
           scrollbar-width: auto;
           scrollbar-color: #6366f1 transparent;
+        }
+
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        
+        @keyframes float-particle {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(var(--tx), var(--ty)) scale(0.8); }
+        }
+
+        @keyframes pulse-ring {
+          0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1); }
+          100% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+        }
+
+        .animate-shimmer {
+          animation: shimmer 2s infinite linear;
+        }
+
+        .animate-pulse-ring {
+          animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .particle-1, .particle-2, .particle-3 {
+          position: absolute;
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.5);
+          pointer-events: none;
+        }
+
+        .particle-1 {
+          top: 20%;
+          left: 20%;
+          --tx: 10px;
+          --ty: -10px;
+          animation: float-particle 3s infinite ease-in-out;
+        }
+
+        .particle-2 {
+          top: 50%;
+          right: 20%;
+          --tx: -15px;
+          --ty: 5px;
+          animation: float-particle 4s infinite ease-in-out;
+        }
+
+        .particle-3 {
+          bottom: 20%;
+          left: 50%;
+          --tx: 5px;
+          --ty: 15px;
+          animation: float-particle 5s infinite ease-in-out;
         }
       `}</style>
     </div>
