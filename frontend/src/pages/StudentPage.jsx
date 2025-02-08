@@ -44,8 +44,9 @@ const StudentPage = () => {
                 {/* Student Photo */}
                 <div className="flex flex-col items-center gap-3">
                   <div className="w-40 h-40 rounded-2xl overflow-hidden border-4 border-white/50 shadow-xl">
+                    {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
                     <img 
-                      src="https://img.freepik.com/free-photo/portrait-cute-little-boy-white-t-shirt_23-2148445671.jpg" // Placeholder student image
+                      src="https://img.freepik.com/free-photo/portrait-cute-little-boy-white-t-shirt_23-2148445671.jpg"
                       alt="Student Photo"
                       className="w-full h-full object-cover"
                     />
