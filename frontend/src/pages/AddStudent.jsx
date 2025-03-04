@@ -25,6 +25,8 @@ const AddStudent = () => {
     navigate('/');
   };
 
+  const selectClass = "w-full px-4 py-3 pr-8 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 text-[#6F6C90]";
+
   return (
     <div className="min-h-screen w-full flex flex-col items-center bg-[#f7f7f7] relative overflow-x-hidden py-20">
       {/* Animated background blobs with fixed positioning */}
@@ -67,13 +69,13 @@ const AddStudent = () => {
       <div className="w-[90%] max-w-[1200px] mx-4 z-10">
         {/* Tabs */}
         <div className="flex justify-center mb-8">
-          <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-2 inline-flex gap-2 shadow-lg relative">
+          <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-2 inline-flex gap-2 shadow-lg relative w-[372px]">
             {/* Active Tab Background */}
             <div
               className="absolute h-[calc(100%-8px)] top-[4px] transition-all duration-300 ease-in-out rounded-xl bg-[#6366f1] shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)]"
               style={{
-                left: activeTab === "student-details" ? "4px" : "50%",
-                width: "calc(50% - 6px)",
+                left: activeTab === "student-details" ? "4px" : "188px",
+                width: "180px",
                 background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
               }}
             >
@@ -88,9 +90,9 @@ const AddStudent = () => {
             {/* Student Details Tab */}
             <button
               onClick={() => setActiveTab("student-details")}
-              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 relative z-10 ${
+              className={`w-[180px] px-6 py-3 rounded-xl font-medium transition-all duration-300 relative z-10 text-center whitespace-nowrap ${
                 activeTab === "student-details"
-                  ? "text-white scale-105"
+                  ? "text-white"
                   : "text-[#170F49] hover:text-[#6366f1]"
               }`}
             >
@@ -100,9 +102,9 @@ const AddStudent = () => {
             {/* Case Record Tab */}
             <button
               onClick={() => setActiveTab("case-record")}
-              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 relative z-10 ${
+              className={`w-[180px] px-6 py-3 rounded-xl font-medium transition-all duration-300 relative z-10 text-center whitespace-nowrap ${
                 activeTab === "case-record"
-                  ? "text-white scale-105"
+                  ? "text-white"
                   : "text-[#170F49] hover:text-[#6366f1]"
               }`}
             >
@@ -134,9 +136,7 @@ const AddStudent = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-[#170F49] mb-2">Class</label>
-                  <select
-                    className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                  >
+                  <select className={selectClass}>
                     <option value="">Select class</option>
                     <option value="X-A">X-A</option>
                     <option value="X-B">X-B</option>
@@ -165,145 +165,147 @@ const AddStudent = () => {
             <div className="space-y-8">
               {/* Identification Data */}
               <div className="bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-8 md:p-12 border border-white/20">
-                {/* Section Header */}
                 <h2 className="text-2xl font-bold text-[#170F49] mb-6 flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-[#6366f1]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
                   </svg>
                   Identification Data
                 </h2>
-                {/* Form Fields */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {/* Basic Information */}
-                  <div className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Name</label>
-                      <input
-                        type="text"
-                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                        placeholder="Enter name"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Admission Number</label>
-                      <input
-                        type="text"
-                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                        placeholder="Enter admission number"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Date of Birth</label>
-                      <input
-                        type="date"
-                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Age</label>
-                      <input
-                        type="text"
-                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                        placeholder="Enter age"
-                      />
-                    </div>
+
+                {/* Form Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-6">
+                  {/* First Row */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-[#170F49]">Name</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                      placeholder="Enter name"
+                    />
                   </div>
 
-                  {/* Personal Information */}
-                  <div className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Sex</label>
-                      <select
-                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                      >
-                        <option value="">Select sex</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Education</label>
-                      <input
-                        type="text"
-                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                        placeholder="Enter education"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Blood Group</label>
-                      <select
-                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                      >
-                        <option value="">Select blood group</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-                      </select>
-                    </div>
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-[#170F49]">Sex</label>
+                    <select className={selectClass}>
+                      <option value="">Select sex</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Other</option>
+                    </select>
                   </div>
 
-                  {/* Additional Information */}
-                  <div className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Religion</label>
-                      <select
-                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                      >
-                        <option value="">Select religion</option>
-                        <option value="hinduism">Hinduism</option>
-                        <option value="islam">Islam</option>
-                        <option value="christianity">Christianity</option>
-                        <option value="sikhism">Sikhism</option>
-                        <option value="buddhism">Buddhism</option>
-                        <option value="jainism">Jainism</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Category</label>
-                      <div className="bg-white px-4 py-3 rounded-xl border shadow-lg space-y-3">
-                        {['SC', 'ST', 'OBC', 'OEC'].map((category) => (
-                          <label key={category} className="flex items-center space-x-2">
-                            <input
-                              type="checkbox"
-                              className="w-4 h-4 rounded border-gray-300 text-[#6366f1] focus:ring-[#6366f1]"
-                            />
-                            <span className="text-sm text-[#170F49]">{category}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Aadhar Number</label>
-                      <input
-                        type="text"
-                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                        placeholder="Enter Aadhar number"
-                      />
-                    </div>
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-[#170F49]">Religion</label>
+                    <select className={selectClass}>
+                      <option value="">Select religion</option>
+                      <option value="hinduism">Hinduism</option>
+                      <option value="christianity">Christianity</option>
+                      <option value="islam">Islam</option>
+                      <option value="sikhism">Sikhism</option>
+                      <option value="buddhism">Buddhism</option>
+                      <option value="jainism">Jainism</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  {/* Second Row */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-[#170F49]">Admission Number</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                      placeholder="Enter admission number"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-[#170F49]">Education</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                      placeholder="Enter education"
+                    />
+                  </div>
+
+                  {/* Third Row */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-[#170F49]">Date of Birth</label>
+                    <input
+                      type="date"
+                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-[#170F49]">Age</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                      placeholder="Enter age"
+                    />
+                  </div>
+
+                  {/* Fourth Row */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-[#170F49]">Blood Group</label>
+                    <select className={selectClass}>
+                      <option value="">Select blood group</option>
+                      <option value="A+">A+</option>
+                      <option value="A-">A-</option>
+                      <option value="B+">B+</option>
+                      <option value="B-">B-</option>
+                      <option value="AB+">AB+</option>
+                      <option value="AB-">AB-</option>
+                      <option value="O+">O+</option>
+                      <option value="O-">O-</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-[#170F49]">Aadhar Number</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                      placeholder="Enter Aadhar number"
+                    />
+                  </div>
+                </div>
+
+{/* Category Section */}
+<div className="mt-6">
+                  <label className="block text-sm font-medium text-[#170F49] mb-2">Category</label>
+                  <div className="grid grid-cols-4 gap-4">
+                    {['SC', 'ST', 'OBC', 'OEC'].map((category) => (
+                      <label key={category} className="relative">
+                        <input
+                          type="radio"
+                          name="category"
+                          value={category}
+                          className="peer absolute opacity-0"
+                        />
+                        <div className="flex items-center justify-center p-4 rounded-xl bg-white border-2 border-transparent cursor-pointer transition-all duration-300 hover:bg-white/90 peer-checked:bg-white peer-checked:border-[#6366f1] peer-checked:shadow-lg">
+                          <span className="text-sm font-medium text-[#170F49]">{category}</span>
+                        </div>
+                      </label>
+                    ))}
                   </div>
                 </div>
               </div>
 
               {/* Demographic Data */}
               <div className="bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-8 md:p-12 border border-white/20">
-                <h2 className="text-2xl font-bold text-[#170F49] mb-6 flex items-center">
+                <h2 className="text-2xl font-bold text-[#170F49] mb-10 pb-4 border-b border-[#6366f1]/20 flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-[#6366f1]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                   Demographic Data
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                   {/* Father's Information */}
-                  <div>
+                  <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8">
+                    <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Father's Details</h3>
                     <div className="space-y-6">
-                      <div>
+                      <div className="h-[85px]">
                         <label className="block text-sm font-medium text-[#170F49] mb-2">Father's Name</label>
                         <input
                           type="text"
@@ -311,7 +313,7 @@ const AddStudent = () => {
                           placeholder="Enter father's name"
                         />
                       </div>
-                      <div>
+                      <div className="h-[85px]">
                         <label className="block text-sm font-medium text-[#170F49] mb-2">Father's Education</label>
                         <input
                           type="text"
@@ -319,7 +321,7 @@ const AddStudent = () => {
                           placeholder="Enter father's education"
                         />
                       </div>
-                      <div>
+                      <div className="h-[85px]">
                         <label className="block text-sm font-medium text-[#170F49] mb-2">Father's Occupation</label>
                         <input
                           type="text"
@@ -331,9 +333,10 @@ const AddStudent = () => {
                   </div>
 
                   {/* Mother's Information */}
-                  <div>
+                  <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8">
+                    <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Mother's Details</h3>
                     <div className="space-y-6">
-                      <div>
+                      <div className="h-[85px]">
                         <label className="block text-sm font-medium text-[#170F49] mb-2">Mother's Name</label>
                         <input
                           type="text"
@@ -341,7 +344,7 @@ const AddStudent = () => {
                           placeholder="Enter mother's name"
                         />
                       </div>
-                      <div>
+                      <div className="h-[85px]">
                         <label className="block text-sm font-medium text-[#170F49] mb-2">Mother's Education</label>
                         <input
                           type="text"
@@ -349,7 +352,7 @@ const AddStudent = () => {
                           placeholder="Enter mother's education"
                         />
                       </div>
-                      <div>
+                      <div className="h-[85px]">
                         <label className="block text-sm font-medium text-[#170F49] mb-2">Mother's Occupation</label>
                         <input
                           type="text"
@@ -361,9 +364,10 @@ const AddStudent = () => {
                   </div>
 
                   {/* Guardian's Information */}
-                  <div>
+                  <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8">
+                    <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Guardian's Details</h3>
                     <div className="space-y-6">
-                      <div>
+                      <div className="h-[85px]">
                         <label className="block text-sm font-medium text-[#170F49] mb-2">Guardian's Name</label>
                         <input
                           type="text"
@@ -371,7 +375,7 @@ const AddStudent = () => {
                           placeholder="Enter guardian's name"
                         />
                       </div>
-                      <div>
+                      <div className="h-[85px]">
                         <label className="block text-sm font-medium text-[#170F49] mb-2">Guardian's Occupation</label>
                         <input
                           type="text"
@@ -379,7 +383,7 @@ const AddStudent = () => {
                           placeholder="Enter guardian's occupation"
                         />
                       </div>
-                      <div>
+                      <div className="h-[85px]">
                         <label className="block text-sm font-medium text-[#170F49] mb-2">Guardian's Relationship</label>
                         <input
                           type="text"
@@ -389,19 +393,22 @@ const AddStudent = () => {
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  {/* Additional Details */}
-                  <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Total Family Income per Month</label>
+                {/* Additional Details */}
+                <div className="mt-12 bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8">
+                  <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Additional Information</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-3">
+                      <label className="block text-sm font-medium text-[#170F49] mb-3">Total Family Income per Month</label>
                       <input
                         type="text"
                         className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
                         placeholder="Enter family income"
                       />
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Duration of Contact</label>
+                    <div className="space-y-3">
+                      <label className="block text-sm font-medium text-[#170F49] mb-3">Duration of Contact</label>
                       <input
                         type="text"
                         className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
@@ -409,54 +416,68 @@ const AddStudent = () => {
                       />
                     </div>
                   </div>
+                </div>
 
-                  {/* Full Width Fields */}
-                  <div className="md:col-span-3 space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Address and Phone Number</label>
-                      <textarea
-                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
-                        rows="3"
-                        placeholder="Enter address and phone number"
-                      ></textarea>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+{/* Contact & Medical Information */}
+                <div className="mt-10 space-y-8">
+                  {/* Contact Information */}
+                  <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8">
+                    <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Contact Information</h3>
+                    <div className="space-y-8">
                       <div>
-                        <label className="block text-sm font-medium text-[#170F49] mb-2">Informant's Name</label>
-                        <input
-                          type="text"
-                          className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                          placeholder="Enter informant's name"
-                        />
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Address and Phone Number</label>
+                        <textarea
+                          className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
+                          rows="3"
+                          placeholder="Enter address and phone number"
+                        ></textarea>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-sm font-medium text-[#170F49] mb-2">Informant's Name</label>
+                          <input
+                            type="text"
+                            className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                            placeholder="Enter informant's name"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-[#170F49] mb-2">Informant's Relationship</label>
+                          <input
+                            type="text"
+                            className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                            placeholder="Enter informant's relationship"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Medical Information */}
+                  <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8">
+                    <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Medical Information</h3>
+                    <div className="space-y-8">
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Present Complaints</label>
+                        <textarea
+                          className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
+                          rows="3"
+                          placeholder="Enter present complaints"
+                        ></textarea>
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-[#170F49] mb-2">Informant's Relationship</label>
-                        <input
-                          type="text"
-                          className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                          placeholder="Enter informant's relationship"
-                        />
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Previous Consultations and Treatment</label>
+                        <textarea
+                          className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
+                          rows="3"
+                          placeholder="Enter previous consultations and treatment"
+                        ></textarea>
                       </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Present Complaints</label>
-                      <textarea
-                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
-                        rows="3"
-                        placeholder="Enter present complaints"
-                      ></textarea>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">Previous Consultations and Treatment</label>
-                      <textarea
-                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
-                        rows="3"
-                        placeholder="Enter previous consultations and treatment"
-                      ></textarea>
                     </div>
                   </div>
                 </div>
               </div>
+
               {/* Family History Container */}
               <div className="bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-8 md:p-12 border border-white/20">
                 <h2 className="text-2xl font-bold text-[#170F49] mb-6 flex items-center">
