@@ -29,6 +29,11 @@ const HeadMaster = () => {
     navigate('/');
   };
 
+  // Add this function to handle navigation to AddStudent
+  const handleAddStudent = () => {
+    navigate('/add-student');
+  };
+
   // Add this function to handle navigation to AddTeacher
   const handleAddTeacher = () => {
     navigate('/add-teacher');
@@ -116,34 +121,15 @@ const HeadMaster = () => {
               style={{
                 left: activeTab === "students" ? "4px" : "50%",
                 width: "calc(50% - 6px)",
-                transform: `scale(${1})`,
-                opacity: 0.95,
-                backdropFilter: 'blur(4px)',
                 background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
               }}
             >
-              {/* Subtle glow effect */}
-              <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 hover:opacity-100 transition-opacity duration-300" />
-              
-              {/* Animated border */}
-              <div className="absolute inset-0 rounded-xl overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" 
-                     style={{
-                       backgroundSize: '200% 100%',
-                       animation: 'shimmer 2s infinite linear'
-                     }}
-                />
-              </div>
-
               {/* Animated particles */}
               <div className="absolute inset-0 overflow-hidden rounded-xl">
                 <div className="particle-1"></div>
                 <div className="particle-2"></div>
                 <div className="particle-3"></div>
               </div>
-
-              {/* Pulse effect */}
-              <div className="absolute inset-0 rounded-xl animate-pulse-ring"></div>
             </div>
             
             {/* Students Tab */}
@@ -193,7 +179,7 @@ const HeadMaster = () => {
                   >
                     <path
                       fillRule="evenodd"
-                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                      d="M8 4a4 4 0 100 8 4  4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                       clipRule="evenodd"
                     />
                   </svg>
@@ -201,7 +187,10 @@ const HeadMaster = () => {
 
                 <div className="flex items-center gap-3">
                   {/* Add Student Button */}
-                  <button className="px-6 py-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105 flex items-center gap-2">
+                  <button 
+                    onClick={handleAddStudent}
+                    className="px-6 py-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105 flex items-center gap-2"
+                  >
                     <svg 
                       xmlns="http://www.w3.org/2000/svg" 
                       className="h-5 w-5" 
@@ -665,27 +654,9 @@ const HeadMaster = () => {
           scrollbar-color: #6366f1 transparent;
         }
 
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-        
         @keyframes float-particle {
           0%, 100% { transform: translate(0, 0) scale(1); }
           50% { transform: translate(var(--tx), var(--ty)) scale(0.8); }
-        }
-
-        @keyframes pulse-ring {
-          0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1); }
-          100% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
-        }
-
-        .animate-shimmer {
-          animation: shimmer 2s infinite linear;
-        }
-
-        .animate-pulse-ring {
-          animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
 
         .particle-1, .particle-2, .particle-3 {
