@@ -165,7 +165,7 @@ const AddStudent = () => {
             <div className="space-y-8">
               {/* Identification Data */}
               <div className="bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-8 md:p-12 border border-white/20">
-                <h2 className="text-2xl font-bold text-[#170F49] mb-6 flex items-center">
+                <h2 className="text-2xl font-bold text-[#170F49] mb-10 pb-4 border-b border-[#6366f1]/20 flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-[#6366f1]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
                   </svg>
@@ -296,7 +296,9 @@ const AddStudent = () => {
               <div className="bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-8 md:p-12 border border-white/20">
                 <h2 className="text-2xl font-bold text-[#170F49] mb-10 pb-4 border-b border-[#6366f1]/20 flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-[#6366f1]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12a3 3 0 11-6 0 3 3 0 016 0zm6 0a3 3 0 11-6 0 3 3 0 016 0zm6 0a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v1M12 19v1M4.2 5.2l.7.7m14.2-.7l-.7.7" />
                   </svg>
                   Demographic Data
                 </h2>
@@ -480,7 +482,7 @@ const AddStudent = () => {
 
               {/* Family History Container */}
               <div className="bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-8 md:p-12 border border-white/20">
-                <h2 className="text-2xl font-bold text-[#170F49] mb-6 flex items-center">
+                <h2 className="text-2xl font-bold text-[#170F49] mb-10 pb-4 border-b border-[#6366f1]/20 flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-[#6366f1]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
@@ -490,8 +492,8 @@ const AddStudent = () => {
                 {/* Household Composition Table */}
                 <div className="mb-8">
                   <h3 className="text-lg font-semibold text-[#170F49] mb-4">Household Composition</h3>
-                  <div className="overflow-x-auto">
-                    <table className="w-full border border-[#6366f1]/20 rounded-xl backdrop-blur-xl">
+                  <div className="overflow-hidden">
+                    <table className="w-full border border-[#6366f1]/20 rounded-xl backdrop-blur-xl overflow-hidden">
                       <thead>
                         <tr className="border-b border-[#6366f1]/20">
                           <th className="px-4 py-3 text-left text-sm font-semibold text-[#170F49]">S.No</th>
@@ -517,7 +519,7 @@ const AddStudent = () => {
                                   );
                                   setHouseholdRows(updatedRows);
                                 }}
-                                className="w-full px-3 py-2 bg-white/50 border border-[#6366f1]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                                className="w-full px-3 py-2 bg-white/50 border border-[#6366f1]/20 rounded-xl shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
                               />
                             </td>
                             <td className="px-4 py-3">
@@ -530,7 +532,7 @@ const AddStudent = () => {
                                   );
                                   setHouseholdRows(updatedRows);
                                 }}
-                                className="w-full px-3 py-2 bg-white/50 border border-[#6366f1]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                                className="w-full px-3 py-2 bg-white/50 border border-[#6366f1]/20 rounded-xl shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
                               />
                             </td>
                             <td className="px-4 py-3">
@@ -543,7 +545,7 @@ const AddStudent = () => {
                                   );
                                   setHouseholdRows(updatedRows);
                                 }}
-                                className="w-full px-3 py-2 bg-white/50 border border-[#6366f1]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                                className="w-full px-3 py-2 bg-white/50 border border-[#6366f1]/20 rounded-xl shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
                               />
                             </td>
                             <td className="px-4 py-3">
@@ -556,7 +558,7 @@ const AddStudent = () => {
                                   );
                                   setHouseholdRows(updatedRows);
                                 }}
-                                className="w-full px-3 py-2 bg-white/50 border border-[#6366f1]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                                className="w-full px-3 py-2 bg-white/50 border border-[#6366f1]/20 rounded-xl shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
                               />
                             </td>
                             <td className="px-4 py-3">
@@ -569,7 +571,7 @@ const AddStudent = () => {
                                   );
                                   setHouseholdRows(updatedRows);
                                 }}
-                                className="w-full px-3 py-2 bg-white/50 border border-[#6366f1]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                                className="w-full px-3 py-2 bg-white/50 border border-[#6366f1]/20 rounded-xl shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
                               />
                             </td>
                             <td className="px-4 py-3">
@@ -582,7 +584,7 @@ const AddStudent = () => {
                                   );
                                   setHouseholdRows(updatedRows);
                                 }}
-                                className="w-full px-3 py-2 bg-white/50 border border-[#6366f1]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                                className="w-full px-3 py-2 bg-white/50 border border-[#6366f1]/20 rounded-xl shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
                               />
                             </td>
                           </tr>
@@ -591,7 +593,7 @@ const AddStudent = () => {
                     </table>
                     <button 
                       onClick={addHouseholdRow}
-                      className="mt-4 px-4 py-2 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200"
+                      className="mt-4 w-full px-4 py-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)]"
                     >
                       Add Row
                     </button>
@@ -630,23 +632,26 @@ const AddStudent = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                   <div>
                     <label className="block text-sm font-medium text-[#170F49] mb-2">Family History of Mental Illness</label>
-                    <textarea
+                      <textarea
                       className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
                       rows="3"
+                      placeholder="Enter family history of mental illness"
                     ></textarea>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-[#170F49] mb-2">Family History of Mental Retardation</label>
-                    <textarea
+                      <textarea
                       className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
                       rows="3"
+                      placeholder="Enter family history of mental retardation"
                     ></textarea>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-[#170F49] mb-2">Family History of Epilepsy and Others</label>
-                    <textarea
+                      <textarea
                       className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
                       rows="3"
+                      placeholder="Enter family history of epilepsy and other conditions"
                     ></textarea>
                   </div>
                 </div>
@@ -655,23 +660,26 @@ const AddStudent = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                   <div>
                     <label className="block text-sm font-medium text-[#170F49] mb-2">Prenatal History</label>
-                    <textarea
+                      <textarea
                       className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
                       rows="3"
+                      placeholder="Enter prenatal history"
                     ></textarea>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-[#170F49] mb-2">Natal and Neonatal</label>
-                    <textarea
+                      <textarea
                       className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
                       rows="3"
+                      placeholder="Enter natal and neonatal history"
                     ></textarea>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-[#170F49] mb-2">Postnatal History</label>
-                    <textarea
+                      <textarea
                       className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
                       rows="3"
+                      placeholder="Enter postnatal history"
                     ></textarea>
                   </div>
                 </div>
@@ -713,24 +721,250 @@ const AddStudent = () => {
                       <textarea
                         className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
                         rows="3"
+                        placeholder={`Enter ${field.toLowerCase()}`}
                       ></textarea>
                     </div>
                   ))}
+                </div>
+              </div>
+
+              {/* Special Education Assessment */}
+              <div className="bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-8 md:p-12 border border-white/20">
+                <h2 className="text-2xl font-bold text-[#170F49] mb-10 pb-4 border-b border-[#6366f1]/20 flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-[#6366f1]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                  </svg>
+                  Special Education Assessment
+                </h2>
+
+                {/* Self Help */}
+                <div className="space-y-8 mb-8">
+                  <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Self Help</h3>
+                  
+                  {/* Food Habits */}
+                  <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-6">
+                    <h4 className="text-md font-medium text-[#170F49]">Food Habits</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Eating</label>
+                        <input type="text" placeholder="Describe eating habits and capabilities" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Drinking</label>
+                        <input type="text" placeholder="Describe drinking habits and capabilities" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Toilet Habits (Include mention hygenic where applicable)</label>
+                      <input type="text" placeholder="Describe toilet habits and hygiene practices" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Brushing</label>
+                      <input type="text" placeholder="Describe brushing capabilities and routine" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Bathing</label>
+                      <input type="text" placeholder="Describe bathing capabilities and habits" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                  </div>
+
+                  {/* Dressing */}
+                  <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-6">
+                    <h4 className="text-md font-medium text-[#170F49]">Dressing</h4>
+                    <div className="space-y-6">
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Removing and wearing clothes</label>
+                        <input type="text" placeholder="Describe ability to remove and wear clothes independently" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Unbuttoning and Buttoning</label>
+                        <input type="text" placeholder="Describe ability to handle buttons independently" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">wearing shoes/Slippers</label>
+                        <input type="text" placeholder="Describe ability to wear footwear independently" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Grooming (include shaving skills where applicable)</label>
+                        <input type="text" placeholder="Describe grooming abilities including shaving if applicable" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Motor */}
+                <div className="space-y-8 mb-8">
+                  <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Motor</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Gross Motor</label>
+                      <input type="text" placeholder="Describe capabilities in large movements, balance, and coordination" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Fine Motor</label>
+                      <input type="text" placeholder="Describe capabilities in small, precise movements" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Sensory */}
+                <div className="space-y-8 mb-8">
+                  <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Sensory</h3>
+                  <div>
+                    <input type="text" placeholder="Describe sensory responses and processing capabilities" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                  </div>
+                </div>
+
+                {/* Socialization */}
+                <div className="space-y-8 mb-8">
+                  <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Socialization</h3>
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Language/Communication</label>
+                      <input type="text" placeholder="Describe communication abilities and language skills" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Social behaviour</label>
+                      <input type="text" placeholder="Describe interactions with others and social adaptability" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Mobility in the nieghborhood</label>
+                      <input type="text" placeholder="Describe ability to navigate and move around in familiar areas" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Cognitive */}
+                <div className="space-y-8 mb-8">
+                  <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Cognitive</h3>
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Attention</label>
+                      <input type="text" placeholder="Describe attention span and focus capabilities" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Identification of familiar objects</label>
+                      <input type="text" placeholder="Describe ability to recognize and name common objects" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Use of familiar objects</label>
+                      <input type="text" placeholder="Describe ability to appropriately use common objects" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Following simple instruction</label>
+                      <input type="text" placeholder="Describe ability to understand and follow basic instructions" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Awareness of dangrer and hazards</label>
+                      <input type="text" placeholder="Describe understanding of dangerous situations" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                  </div>
+
+                  {/* Concept formation */}
+                  <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-6">
+                    <h4 className="text-md font-medium text-[#170F49]">Concept formation (Indicate ability to match, identify name wherever applicable)</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Color</label>
+                        <input type="text" placeholder="Describe ability to recognize and match colors" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Size</label>
+                        <input type="text" placeholder="Describe understanding of size concepts" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Sex</label>
+                        <input type="text" placeholder="Describe understanding of gender concepts" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Shape</label>
+                        <input type="text" placeholder="Describe ability to recognize and name shapes" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Number</label>
+                        <input type="text" placeholder="Describe understanding of numbers and counting" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Time</label>
+                        <input type="text" placeholder="Describe understanding of time concepts" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Money</label>
+                        <input type="text" placeholder="Describe understanding of money concepts" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Academic */}
+                <div className="space-y-8 mb-8">
+                  <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Academic (give brief history: class attended/attending indicate class/grade/level wherever appropriate)</h3>
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Reading</label>
+                      <input type="text" placeholder="Describe reading level and comprehension" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Writing</label>
+                      <input type="text" placeholder="Describe writing abilities and skills" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Arithmetic</label>
+                      <input type="text" placeholder="Describe mathematical understanding and abilities" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Prevocational/Domestic */}
+                <div className="space-y-8 mb-8">
+                  <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Prevocational/Domestic (Specify ability and interest)</h3>
+                  <div>
+                    <input type="text" placeholder="Describe prevocational skills and domestic abilities" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                  </div>
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Items of interest</label>
+                      <input type="text" placeholder="List activities and objects that interest the student" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Items of dislike</label>
+                      <input type="text" placeholder="List activities and objects that the student dislikes" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Additional Fields */}
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-[#170F49] mb-2">Any peculiar behaviour/behaviour problems observed</label>
+                    <textarea className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" rows="4" placeholder="Describe any unusual behaviors or behavioral concerns observed"></textarea>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-[#170F49] mb-2">Any other</label>
+                    <textarea className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" rows="4" placeholder="Add any additional observations or comments"></textarea>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-[#170F49] mb-2">Recommendation</label>
+                    <textarea className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" rows="4" placeholder="Provide detailed recommendations for support and intervention"></textarea>
+                  </div>
                 </div>
               </div>
             </div>
           )}
 
           {/* Action Buttons */}
-          <div className="flex justify-end gap-4">
+          <div className="flex justify-between w-full mt-8">
+            <button className="w-[48%] px-6 py-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105">
+              Save Student
+            </button>
             <button
               onClick={() => navigate(-1)}
-              className="px-6 py-3 bg-gray-500 text-white rounded-xl hover:bg-gray-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1 hover:scale-105"
+              className="w-[48%] px-6 py-3 bg-gray-500 text-white rounded-xl hover:bg-gray-600 transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105"
             >
               Cancel
-            </button>
-            <button className="px-6 py-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105">
-              Save Student
             </button>
           </div>
         </div>
