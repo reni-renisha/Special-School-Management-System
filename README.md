@@ -34,7 +34,9 @@ The animated background should be the same through out, we work in containers th
 3. Data privacy protection
 
 ### 🚧 Current Status
+```
 Work in Progress!
+```
 
 # 🚀 Getting Started
 
