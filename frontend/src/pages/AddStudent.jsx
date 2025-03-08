@@ -310,8 +310,6 @@ const [householdRows, setHouseholdRows] = useState([
                 <h2 className="text-2xl font-bold text-[#170F49] mb-10 pb-4 border-b border-[#6366f1]/20 flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-[#6366f1]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12a3 3 0 11-6 0 3 3 0 016 0zm6 0a3 3 0 11-6 0 3 3 0 016 0zm6 0a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v1M12 19v1M4.2 5.2l.7.7m14.2-.7l-.7.7" />
                   </svg>
                   Demographic Data
                 </h2>
