@@ -1,9 +1,3 @@
-  _________                    .__       .__      _________      .__                  .__   
- /   _____/_____   ____   ____ |__|____  |  |    /   _____/ ____ |  |__   ____   ____ |  |  
- \_____  \\____ \_/ __ \_/ ___\|  \__  \ |  |    \_____  \_/ ___\|  |  \ /  _ \ /  _ \|  |  
- /        \  |_> >  ___/\  \___|  |/ __ \|  |__  /        \  \___|   Y  (  <_> |  <_> )  |__
-/_______  /   __/ \___  >\___  >__(____  /____/ /_______  /\___  >___|  /\____/ \____/|____/
-        \/|__|        \/     \/        \/               \/     \/     \/                    
 # 🎯 Project Description
 A modern web application designed to revolutionize special education school management. Built with React and styled with Tailwind CSS, this system provides a comprehensive solution for managing students, teachers, and administrative tasks in special education institutions.
 
