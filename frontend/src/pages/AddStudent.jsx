@@ -4,9 +4,22 @@ import { useNavigate } from 'react-router-dom';
 const AddStudent = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("student-details");
-  const [householdRows, setHouseholdRows] = useState([
+const [householdRows, setHouseholdRows] = useState([
     { id: 1, name: '', age: '', education: '', occupation: '', health: '', income: '' }
   ]);
+
+  const [drugRows, setDrugRows] = useState([
+    { id: 1, name: '', dose: '' }
+  ]);
+
+  const addDrugRow = () => {
+    const newRow = {
+      id: drugRows.length + 1,
+      name: '',
+      dose: ''
+    };
+    setDrugRows([...drugRows, newRow]);
+  };
 
   const addHouseholdRow = () => {
     const newRow = {
@@ -452,31 +465,38 @@ const AddStudent = () => {
                           />
                         </div>
                       </div>
+
+                      {/* Additional Contact Information */}
+                      <div className="space-y-6 mt-6">
+                        <div>
+                          <label className="block text-sm font-medium text-[#170F49] mb-2">Duration of Contact</label>
+                          <input
+                            type="text"
+                            className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                            placeholder="Enter duration of contact"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-[#170F49] mb-2">Present Complaints</label>
+                          <textarea
+                            className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
+                            rows="3"
+                            placeholder="Enter present complaints"
+                          ></textarea>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-[#170F49] mb-2">Previous Consultation and Treatments</label>
+                          <textarea
+                            className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
+                            rows="3"
+                            placeholder="Enter previous consultation and treatments"
+                          ></textarea>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Medical Information */}
-                  <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8">
-                    <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Medical Information</h3>
-                    <div className="space-y-8">
-                      <div>
-                        <label className="block text-sm font-medium text-[#170F49] mb-2">Present Complaints</label>
-                        <textarea
-                          className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
-                          rows="3"
-                          placeholder="Enter present complaints"
-                        ></textarea>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-[#170F49] mb-2">Previous Consultations and Treatment</label>
-                        <textarea
-                          className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
-                          rows="3"
-                          placeholder="Enter previous consultations and treatment"
-                        ></textarea>
-                      </div>
-                    </div>
-                  </div>
+
                 </div>
               </div>
 
@@ -949,6 +969,134 @@ const AddStudent = () => {
                   <div>
                     <label className="block text-sm font-medium text-[#170F49] mb-2">Recommendation</label>
                     <textarea className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" rows="4" placeholder="Provide detailed recommendations for support and intervention"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              {/* Medical Information Container */}
+              <div className="bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-8 md:p-12 border border-white/20">
+                <h2 className="text-2xl font-bold text-[#170F49] mb-10 pb-4 border-b border-[#6366f1]/20 flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-[#6366f1]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  </svg>
+                  Medical Information
+                </h2>
+
+                {/* Medical History */}
+                <div className="space-y-8">
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Medical History</h3>
+                    <div className="mt-6 space-y-6">
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Any specific diagnostic</label>
+                        <input type="text" placeholder="Enter specific diagnostic details" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {[
+                          'History of fits (seizures)',
+                          'History of Recent Surgery',
+                          'History of Bleeding Disorders',
+                          'Using spectables/dentures/hearing aid'
+                        ].map((item) => (
+                          <label key={item} className="flex items-center space-x-3 bg-white p-4 rounded-xl border shadow-lg hover:shadow-xl">
+                            <input
+                              type="checkbox"
+                              className="w-4 h-4 rounded border-gray-300 text-[#6366f1] focus:ring-[#6366f1]"
+                            />
+                            <span className="text-sm text-[#170F49]">{item}</span>
+                          </label>
+                        ))}
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Any other relevant Medical Information</label>
+                        <textarea className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none" rows="3" placeholder="Enter other relevant medical information"></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Drug History */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Drug History</h3>
+                    <div className="mt-6 space-y-6">
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Is the child on regular drugs</label>
+                        <input type="text" placeholder="Enter details about regular medication" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+
+                      <div className="overflow-hidden">
+                          <table className="w-full border border-[#6366f1]/20 rounded-xl backdrop-blur-xl overflow-hidden">
+                            <thead>
+                              <tr className="border-b border-[#6366f1]/20">
+                                <th className="px-4 py-3 text-left text-sm font-semibold text-[#170F49]">S.No</th>
+                                <th className="px-4 py-3 text-left text-sm font-semibold text-[#170F49]">Name of drug</th>
+                                <th className="px-4 py-3 text-left text-sm font-semibold text-[#170F49]">Dose if known</th>
+                              </tr>
+                            </thead>
+                          <tbody>
+                            {drugRows.map((row) => (
+                              <tr key={row.id} className="border-b border-[#6366f1]/10">
+                                <td className="px-4 py-3 text-sm text-[#170F49]">{row.id}</td>
+                                <td className="px-4 py-3">
+                                  <input 
+                                    type="text"
+                                    value={row.name}
+                                    onChange={(e) => {
+                                      const updatedRows = drugRows.map(r => 
+                                        r.id === row.id ? { ...r, name: e.target.value } : r
+                                      );
+                                      setDrugRows(updatedRows);
+                                    }}
+                                    className="w-full px-3 py-2 bg-white/50 border border-[#6366f1]/20 rounded-xl shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                                    placeholder="Enter drug name"
+                                  />
+                                </td>
+                                <td className="px-4 py-3">
+                                  <input 
+                                    type="text"
+                                    value={row.dose}
+                                    onChange={(e) => {
+                                      const updatedRows = drugRows.map(r => 
+                                        r.id === row.id ? { ...r, dose: e.target.value } : r
+                                      );
+                                      setDrugRows(updatedRows);
+                                    }}
+                                    className="w-full px-3 py-2 bg-white/50 border border-[#6366f1]/20 rounded-xl shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                                    placeholder="Enter dose"
+                                  />
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                        <button 
+                          onClick={addDrugRow}
+                          className="mt-4 w-full px-4 py-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)]"
+                        >
+                          Add Drug
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Allergies */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Allergies</h3>
+                    <div className="mt-6 space-y-6">
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Allergies if any</label>
+                        <input type="text" placeholder="Enter allergies" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Drug Allergy</label>
+                        <input type="text" placeholder="Enter drug allergies" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Food Allergy</label>
+                        <input type="text" placeholder="Enter food allergies" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
