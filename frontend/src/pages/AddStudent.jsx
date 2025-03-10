@@ -185,102 +185,99 @@ const [householdRows, setHouseholdRows] = useState([
                   Identification Data
                 </h2>
 
-                {/* Form Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-6">
-                  {/* First Row */}
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-[#170F49]">Name</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                      placeholder="Enter name"
-                    />
-                  </div>
+                <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="space-y-2">
+                      <label className="block text-sm font-medium text-[#170F49]">Name</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter name"
+                      />
+                    </div>
 
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-[#170F49]">Sex</label>
-                    <select className={selectClass}>
-                      <option value="">Select sex</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
+                    <div className="space-y-2">
+                      <label className="block text-sm font-medium text-[#170F49]">Sex</label>
+                      <select className={selectClass}>
+                        <option value="">Select sex</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
 
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-[#170F49]">Religion</label>
-                    <select className={selectClass}>
-                      <option value="">Select religion</option>
-                      <option value="hinduism">Hinduism</option>
-                      <option value="christianity">Christianity</option>
-                      <option value="islam">Islam</option>
-                      <option value="sikhism">Sikhism</option>
-                      <option value="buddhism">Buddhism</option>
-                      <option value="jainism">Jainism</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
+                    <div className="space-y-2">
+                      <label className="block text-sm font-medium text-[#170F49]">Religion</label>
+                      <select className={selectClass}>
+                        <option value="">Select religion</option>
+                        <option value="hinduism">Hinduism</option>
+                        <option value="christianity">Christianity</option>
+                        <option value="islam">Islam</option>
+                        <option value="sikhism">Sikhism</option>
+                        <option value="buddhism">Buddhism</option>
+                        <option value="jainism">Jainism</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
 
-                  {/* Second Row */}
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-[#170F49]">Admission Number</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                      placeholder="Enter admission number"
-                    />
-                  </div>
+                    <div className="space-y-2">
+                      <label className="block text-sm font-medium text-[#170F49]">Admission Number</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter admission number"
+                      />
+                    </div>
 
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-[#170F49]">Education</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                      placeholder="Enter education"
-                    />
-                  </div>
+                    <div className="space-y-2">
+                      <label className="block text-sm font-medium text-[#170F49]">Education</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter education"
+                      />
+                    </div>
 
-                  {/* Third Row */}
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-[#170F49]">Date of Birth</label>
-                    <input
-                      type="date"
-                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                    />
-                  </div>
+                    <div className="space-y-2">
+                      <label className="block text-sm font-medium text-[#170F49]">Date of Birth</label>
+                      <input
+                        type="date"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                      />
+                    </div>
 
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-[#170F49]">Age</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                      placeholder="Enter age"
-                    />
-                  </div>
+                    <div className="space-y-2">
+                      <label className="block text-sm font-medium text-[#170F49]">Age</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter age"
+                      />
+                    </div>
 
-                  {/* Fourth Row */}
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-[#170F49]">Blood Group</label>
-                    <select className={selectClass}>
-                      <option value="">Select blood group</option>
-                      <option value="A+">A+</option>
-                      <option value="A-">A-</option>
-                      <option value="B+">B+</option>
-                      <option value="B-">B-</option>
-                      <option value="AB+">AB+</option>
-                      <option value="AB-">AB-</option>
-                      <option value="O+">O+</option>
-                      <option value="O-">O-</option>
-                    </select>
-                  </div>
+                    <div className="space-y-2">
+                      <label className="block text-sm font-medium text-[#170F49]">Blood Group</label>
+                      <select className={selectClass}>
+                        <option value="">Select blood group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                      </select>
+                    </div>
 
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-[#170F49]">Aadhar Number</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                      placeholder="Enter Aadhar number"
-                    />
+                    <div className="space-y-2">
+                      <label className="block text-sm font-medium text-[#170F49]">Aadhar Number</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter Aadhar number"
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -507,9 +504,9 @@ const [householdRows, setHouseholdRows] = useState([
                   Family History
                 </h2>
 
-                {/* Household Composition Table */}
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-[#170F49] mb-4">Household Composition</h3>
+                {/* Family Composition */}
+                <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8 mb-8">
+                  <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Household Composition</h3>
                   <div className="overflow-hidden">
                     <table className="w-full border border-[#6366f1]/20 rounded-xl backdrop-blur-xl overflow-hidden">
                       <thead>
@@ -619,8 +616,8 @@ const [householdRows, setHouseholdRows] = useState([
                 </div>
 
                 {/* Pedigree Chart Upload */}
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-[#170F49] mb-4">Pedigree Chart</h3>
+                <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8 mb-8">
+                  <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Pedigree Chart</h3>
                   <label 
                     htmlFor="pedigree-upload" 
                     className="block w-full p-4 border-2 border-dashed border-[#6366f1] rounded-xl text-center cursor-pointer hover:bg-white/50 transition-all duration-200"
@@ -647,65 +644,71 @@ const [householdRows, setHouseholdRows] = useState([
                 </div>
 
                 {/* Family History Fields */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <div>
-                    <label className="block text-sm font-medium text-[#170F49] mb-2">Family History of Mental Illness</label>
+                <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8 mb-8">
+                  <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Family Medical History</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Family History of Mental Illness</label>
                       <textarea
-                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
-                      rows="3"
-                      placeholder="Enter family history of mental illness"
-                    ></textarea>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-[#170F49] mb-2">Family History of Mental Retardation</label>
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
+                        rows="3"
+                        placeholder="Enter family history of mental illness"
+                      ></textarea>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Family History of Mental Retardation</label>
                       <textarea
-                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
-                      rows="3"
-                      placeholder="Enter family history of mental retardation"
-                    ></textarea>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-[#170F49] mb-2">Family History of Epilepsy and Others</label>
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
+                        rows="3"
+                        placeholder="Enter family history of mental retardation"
+                      ></textarea>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Family History of Epilepsy and Others</label>
                       <textarea
-                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
-                      rows="3"
-                      placeholder="Enter family history of epilepsy and other conditions"
-                    ></textarea>
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
+                        rows="3"
+                        placeholder="Enter family history of epilepsy and other conditions"
+                      ></textarea>
+                    </div>
                   </div>
                 </div>
 
                 {/* Birth History Fields */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                  <div>
-                    <label className="block text-sm font-medium text-[#170F49] mb-2">Prenatal History</label>
+                <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8 mb-8">
+                  <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Birth History</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Prenatal History</label>
                       <textarea
-                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
-                      rows="3"
-                      placeholder="Enter prenatal history"
-                    ></textarea>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-[#170F49] mb-2">Natal and Neonatal</label>
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
+                        rows="3"
+                        placeholder="Enter prenatal history"
+                      ></textarea>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Natal and Neonatal</label>
                       <textarea
-                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
-                      rows="3"
-                      placeholder="Enter natal and neonatal history"
-                    ></textarea>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-[#170F49] mb-2">Postnatal History</label>
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
+                        rows="3"
+                        placeholder="Enter natal and neonatal history"
+                      ></textarea>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Postnatal History</label>
                       <textarea
-                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
-                      rows="3"
-                      placeholder="Enter postnatal history"
-                    ></textarea>
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
+                        rows="3"
+                        placeholder="Enter postnatal history"
+                      ></textarea>
+                    </div>
                   </div>
                 </div>
 
                 {/* Development History */}
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-[#170F49] mb-4">Development History</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-white p-6 rounded-xl">
+                <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8 mb-8">
+                  <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Development History</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-white p-6 rounded-xl shadow-lg">
                     {[
                       "Smiles at other", "Head Control", "Sitting", "Responds to name",
                       "Babbling", "First words", "Standing", "Walking",
@@ -723,26 +726,29 @@ const [householdRows, setHouseholdRows] = useState([
                 </div>
 
                 {/* Additional Information Fields */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[
-                    "School History",
-                    "Occupational History",
-                    "Behaviour Problems",
-                    "Special Educational Assessment",
-                    "Psychological Assessment",
-                    "Medical Examination",
-                    "Diagnosis",
-                    "Management Plan"
-                  ].map((field) => (
-                    <div key={field}>
-                      <label className="block text-sm font-medium text-[#170F49] mb-2">{field}</label>
-                      <textarea
-                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
-                        rows="3"
-                        placeholder={`Enter ${field.toLowerCase()}`}
-                      ></textarea>
-                    </div>
-                  ))}
+                <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8 mb-8">
+                  <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Additional Information</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {[
+                      "School History",
+                      "Occupational History",
+                      "Behaviour Problems",
+                      "Special Educational Assessment",
+                      "Psychological Assessment",
+                      "Medical Examination",
+                      "Diagnosis",
+                      "Management Plan"
+                    ].map((field) => (
+                      <div key={field}>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">{field}</label>
+                        <textarea
+                          className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
+                          rows="3"
+                          placeholder={`Enter ${field.toLowerCase()}`}
+                        ></textarea>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -756,11 +762,11 @@ const [householdRows, setHouseholdRows] = useState([
                 </h2>
 
                 {/* Self Help */}
-                <div className="space-y-8 mb-8">
+                <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8 mb-8">
                   <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Self Help</h3>
                   
                   {/* Food Habits */}
-                  <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-6">
+                  <div className="bg-white rounded-xl p-6 space-y-6 shadow-lg">
                     <h4 className="text-md font-medium text-[#170F49]">Food Habits</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
@@ -792,7 +798,7 @@ const [householdRows, setHouseholdRows] = useState([
                   {/* Dressing */}
                   <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-6">
                     <h4 className="text-md font-medium text-[#170F49]">Dressing</h4>
-                    <div className="space-y-6">
+                    <div className="bg-white rounded-xl p-6 space-y-6 shadow-lg">
                       <div>
                         <label className="block text-sm font-medium text-[#170F49] mb-2">Removing and wearing clothes</label>
                         <input type="text" placeholder="Describe ability to remove and wear clothes independently" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
@@ -814,9 +820,9 @@ const [householdRows, setHouseholdRows] = useState([
                 </div>
 
                 {/* Motor */}
-                <div className="space-y-8 mb-8">
+                <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8 mb-8">
                   <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Motor</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white rounded-xl p-6 shadow-lg">
                     <div>
                       <label className="block text-sm font-medium text-[#170F49] mb-2">Gross Motor</label>
                       <input type="text" placeholder="Describe capabilities in large movements, balance, and coordination" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
@@ -829,17 +835,17 @@ const [householdRows, setHouseholdRows] = useState([
                 </div>
 
                 {/* Sensory */}
-                <div className="space-y-8 mb-8">
+                <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8 mb-8">
                   <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Sensory</h3>
-                  <div>
+                  <div className="bg-white rounded-xl p-6 shadow-lg">
                     <input type="text" placeholder="Describe sensory responses and processing capabilities" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
                   </div>
                 </div>
 
                 {/* Socialization */}
-                <div className="space-y-8 mb-8">
+                <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8 mb-8">
                   <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Socialization</h3>
-                  <div className="space-y-6">
+                  <div className="bg-white rounded-xl p-6 space-y-6 shadow-lg">
                     <div>
                       <label className="block text-sm font-medium text-[#170F49] mb-2">Language/Communication</label>
                       <input type="text" placeholder="Describe communication abilities and language skills" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
@@ -856,9 +862,9 @@ const [householdRows, setHouseholdRows] = useState([
                 </div>
 
                 {/* Cognitive */}
-                <div className="space-y-8 mb-8">
+                <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8 mb-8">
                   <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Cognitive</h3>
-                  <div className="space-y-6">
+                  <div className="bg-white rounded-xl p-6 space-y-6 shadow-lg">
                     <div>
                       <label className="block text-sm font-medium text-[#170F49] mb-2">Attention</label>
                       <input type="text" placeholder="Describe attention span and focus capabilities" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
@@ -918,9 +924,9 @@ const [householdRows, setHouseholdRows] = useState([
                 </div>
 
                 {/* Academic */}
-                <div className="space-y-8 mb-8">
+                <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8 mb-8">
                   <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Academic (give brief history: class attended/attending indicate class/grade/level wherever appropriate)</h3>
-                  <div className="space-y-6">
+                  <div className="bg-white rounded-xl p-6 space-y-6 shadow-lg">
                     <div>
                       <label className="block text-sm font-medium text-[#170F49] mb-2">Reading</label>
                       <input type="text" placeholder="Describe reading level and comprehension" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
@@ -937,9 +943,9 @@ const [householdRows, setHouseholdRows] = useState([
                 </div>
 
                 {/* Prevocational/Domestic */}
-                <div className="space-y-8 mb-8">
+                <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 space-y-8 mb-8">
                   <h3 className="text-lg font-semibold text-[#170F49] pb-2 border-b border-[#6366f1]/10">Prevocational/Domestic (Specify ability and interest)</h3>
-                  <div>
+                  <div className="bg-white rounded-xl p-6 shadow-lg">
                     <input type="text" placeholder="Describe prevocational skills and domestic abilities" className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300" />
                   </div>
                   <div className="space-y-6">
