@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const AddTeacher = () => {
   const navigate = useNavigate();
   const [teacherData, setTeacherData] = useState({
     name: "",
     address: "",
-    dateOfBirth: "",
+    date_of_birth: "",
     gender: "",
-    bloodGroup: "",
-    mobileNumber: "",
-    aadharNumber: "",
+    blood_group: "",
+    mobile_number: "",
+    aadhar_number: "",
     religion: "",
     caste: "",
-    rciNumber: "",
-    rciRenewalDate: "",
-    qualificationsDetails: "",
+    rci_number: "",
+    rci_renewal_date: "",
+    qualifications_details: "",
     category: "",
   });
 
@@ -24,10 +25,15 @@ const AddTeacher = () => {
     setTeacherData({ ...teacherData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Teacher Data Submitted: ", teacherData);
-    navigate('/headmaster');
+    try {
+      await axios.post('http://localhost:8000/teachers/', teacherData);
+      navigate('/headmaster');
+    } catch (error) {
+      console.error('Error adding teacher:', error);
+      alert('Error adding teacher. Please try again.');
+    }
   };
 
   const selectClassName = `w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all appearance-none text-[#6F6C90] bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23170F49%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px_12px] bg-[center_right_1rem] bg-no-repeat pr-10`;
@@ -104,8 +110,8 @@ const AddTeacher = () => {
                 </label>
                 <input
                   type="date"
-                  name="dateOfBirth"
-                  value={teacherData.dateOfBirth}
+                  name="date_of_birth"
+                  value={teacherData.date_of_birth}
                   onChange={handleInputChange}
                   className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all text-[#6F6C90]"
                   required
@@ -136,8 +142,8 @@ const AddTeacher = () => {
                   Blood Group
                 </label>
                 <select
-                  name="bloodGroup"
-                  value={teacherData.bloodGroup}
+                  name="blood_group"
+                  value={teacherData.blood_group}
                   onChange={handleInputChange}
                   className={selectClassName}
                   required
@@ -159,8 +165,8 @@ const AddTeacher = () => {
                 </label>
                 <input
                   type="tel"
-                  name="mobileNumber"
-                  value={teacherData.mobileNumber}
+                  name="mobile_number"
+                  value={teacherData.mobile_number}
                   onChange={handleInputChange}
                   placeholder="Enter Mobile Number"
                   className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
@@ -175,8 +181,8 @@ const AddTeacher = () => {
               </label>
               <input
                 type="text"
-                name="aadharNumber"
-                value={teacherData.aadharNumber}
+                name="aadhar_number"
+                value={teacherData.aadhar_number}
                 onChange={handleInputChange}
                 placeholder="Enter Aadhar Number"
                 className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
@@ -222,8 +228,8 @@ const AddTeacher = () => {
                 </label>
                 <input
                   type="text"
-                  name="rciNumber"
-                  value={teacherData.rciNumber}
+                  name="rci_number"
+                  value={teacherData.rci_number}
                   onChange={handleInputChange}
                   placeholder="Enter RCI Number"
                   className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
@@ -236,8 +242,8 @@ const AddTeacher = () => {
                 </label>
                 <input
                   type="date"
-                  name="rciRenewalDate"
-                  value={teacherData.rciRenewalDate}
+                  name="rci_renewal_date"
+                  value={teacherData.rci_renewal_date}
                   onChange={handleInputChange}
                   className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all text-[#6F6C90]"
                   required
@@ -250,8 +256,8 @@ const AddTeacher = () => {
                 Qualifications Details
               </label>
               <textarea
-                name="qualificationsDetails"
-                value={teacherData.qualificationsDetails}
+                name="qualifications_details"
+                value={teacherData.qualifications_details}
                 onChange={handleInputChange}
                 placeholder="Enter Qualifications Details"
                 className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90] min-h-[100px]"

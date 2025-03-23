@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const TeacherPage = () => {
   // Get the teacher ID from URL parameters
@@ -8,14 +9,24 @@ const TeacherPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // In a real application, you would fetch teacher data from an API
-    // For now, we'll use mock data based on the ID
-    setTimeout(() => {
-      // Mock teacher data based on ID
-      const teacherData = getTeacherData(id);
-      setTeacher(teacherData);
-      setLoading(false);
-    }, 500); // Simulate network delay
+    const fetchTeacher = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/teachers/${id}`);
+        setTeacher({
+          ...response.data,
+          classes: [
+            { class: 'Class X-A', subject: 'Mathematics', days: 'Monday, Wednesday, Friday', timing: '9:00 AM - 10:00 AM' },
+            { class: 'Class IX-B', subject: 'Mathematics', days: 'Tuesday, Thursday', timing: '10:15 AM - 11:15 AM' }
+          ]
+        });
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching teacher:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchTeacher();
   }, [id]);
 
   const getTeacherData = (teacherId) => {

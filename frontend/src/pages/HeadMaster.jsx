@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const HeadMaster = () => {
   const navigate = useNavigate();
@@ -8,6 +9,8 @@ const HeadMaster = () => {
   const [isSearchFloating, setIsSearchFloating] = useState(false);
   const [activeTab, setActiveTab] = useState("students");
   const [showFilterDropdown, setShowFilterDropdown] = useState(false);
+  const [teachers, setTeachers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   // Add scroll event listener
   useEffect(() => {
@@ -23,6 +26,23 @@ const HeadMaster = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const fetchTeachers = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/teachers/');
+        setTeachers(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching teachers:', error);
+        setLoading(false);
+      }
+    };
+
+    if (activeTab === 'teachers') {
+      fetchTeachers();
+    }
+  }, [activeTab]);
 
   // Add this function to handle logout
   const handleLogout = () => {
@@ -454,132 +474,39 @@ const HeadMaster = () => {
 
               {/* Teachers List */}
               <div className="grid grid-cols-1 gap-4 px-4">
-                {/*Teacher Card 1*/}
-                <div 
-                  onClick={() => handleTeacherClick('arjun-jayakumar')}
-                  className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
-                >
-                  <div className="flex items-center space-x-4 text-[#170F49]">
-                    <div className="w-16 h-16 rounded-lg overflow-hidden">
-                      <img 
-                        src="https://eu.ui-avatars.com/api/?name=Arjun+Jayakumar&size=250" 
-                        alt="Teacher"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-[#170F49]">Arjun Jayakumar</h3>
-                      <div className="space-y-1">
-                        <p className="text-sm text-[#6F6C8F]">
-                          <span className="font-medium">Subject:</span> AI/ML
-                        </p>
-                        <p className="text-sm text-[#6F6C8F]">
-                          <span className="font-medium">Class Assigned:</span> X-B
-
-                        </p>
+                {teachers.map((teacher) => (
+                  <div 
+                    key={teacher.id}
+                    onClick={() => handleTeacherClick(teacher.id)}
+                    className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
+                  >
+                    <div className="flex items-center space-x-4 text-[#170F49]">
+                      <div className="w-16 h-16 rounded-lg overflow-hidden">
+                        <img 
+                          src={`https://eu.ui-avatars.com/api/?name=${teacher.name.replace(' ', '+')}&size=250`}
+                          alt="Teacher"
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                    </div>
-                    <button className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                {/*Teacher Card 2*/}
-                <div 
-                  onClick={() => handleTeacherClick('aditya-s-nair')}
-                  className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
-                >
-                  <div className="flex items-center space-x-4 text-[#170F49]">
-                    <div className="w-16 h-16 rounded-lg overflow-hidden">
-                      <img 
-                        src="https://eu.ui-avatars.com/api/?name=Aditya+S&size=250" 
-                        alt="Teacher"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-[#170F49]">Aditya S Nair</h3>
-                      <div className="space-y-1">
-                        <p className="text-sm text-[#6F6C8F]">
-                          <span className="font-medium">Subject:</span> Mathematics
-                        </p>
-                        <p className="text-sm text-[#6F6C8F]">
-                          <span className="font-medium">Class Teacher:</span> X-A
-                        </p>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold text-[#170F49]">{teacher.name}</h3>
+                        <div className="space-y-1">
+                          <p className="text-sm text-[#6F6C8F]">
+                            <span className="font-medium">Mobile:</span> {teacher.mobile_number}
+                          </p>
+                          <p className="text-sm text-[#6F6C8F]">
+                            <span className="font-medium">Qualifications:</span> {teacher.qualifications_details}
+                          </p>
+                        </div>
                       </div>
+                      <button className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
                     </div>
-                    <button className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
                   </div>
-                </div>
-                {/*Teacher Card 3*/}
-                <div 
-                  onClick={() => handleTeacherClick('abhiram-krishna')}
-                  className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
-                >
-                  <div className="flex items-center space-x-4 text-[#170F49]">
-                    <div className="w-16 h-16 rounded-lg overflow-hidden">
-                      <img 
-                        src="https://eu.ui-avatars.com/api/?name=Abhiram+Krishna&size=250" 
-                        alt="Teacher"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-[#170F49]">Abhiram Krishna</h3>
-                      <div className="space-y-1">
-                        <p className="text-sm text-[#6F6C8F]">
-                          <span className="font-medium">Subject:</span> Not Mathematics
-                        </p>
-                        <p className="text-sm text-[#6F6C8F]">
-                          <span className="font-medium">Class Teacher:</span> X-A
-                        </p>
-                      </div>
-                    </div>
-                    <button className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                {/*Teacher Card 4*/}
-                <div 
-                  onClick={() => handleTeacherClick('faheem-mohammed')}
-                  className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
-                >
-                  <div className="flex items-center space-x-4 text-[#170F49]">
-                    <div className="w-16 h-16 rounded-lg overflow-hidden">
-                      <img 
-                        src="https://eu.ui-avatars.com/api/?name=Faheem+Mohammed&size=250" 
-                        alt="Teacher"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-[#170F49]">Faheem Mohammed</h3>
-                      <div className="space-y-1">
-                        <p className="text-sm text-[#6F6C8F]">
-                          <span className="font-medium">Subject:</span> Cars
-
-                        </p>
-                        <p className="text-sm text-[#6F6C8F]">
-                          <span className="font-medium">Class Teacher:</span> X-A
-                        </p>
-                      </div>
-                    </div>
-                    <button className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
+                ))}
               </div>
             </>
           )}
