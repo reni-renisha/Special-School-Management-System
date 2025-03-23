@@ -1,7 +1,7 @@
 # 🎯 Project Description
 A modern web application designed to revolutionize special education school management. Built with React and styled with Tailwind CSS, this system provides a comprehensive solution for managing students, teachers, and administrative tasks in special education institutions.
 
-#⌛ Commit History Timeline
+# ⌛ Commit History Timeline
 https://repo.surf/definitelyarjun/Special-School-Management-System
 
 # ✨ Key Features
