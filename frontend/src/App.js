@@ -6,6 +6,7 @@ import HeadMaster from './pages/HeadMaster.jsx';
 import AddTeacher from './pages/AddTeacher.jsx';
 import AddStudent from './pages/AddStudent.jsx';
 import StudentPage from './pages/StudentPage.jsx';
+import TeacherPage from './pages/TeacherPage.jsx';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/add-teacher" element={<AddTeacher />} />
           <Route path="/add-student" element={<AddStudent />} />
           <Route path="/student/:id" element={<StudentPage />} />
+          <Route path="/teacher/:id" element={<TeacherPage />} />
         </Routes>
       </div>
     </BrowserRouter>

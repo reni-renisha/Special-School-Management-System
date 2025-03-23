@@ -42,6 +42,26 @@ const [householdRows, setHouseholdRows] = useState([
 
   return (
     <div className="min-h-screen w-full flex flex-col items-center bg-[#f7f7f7] relative overflow-x-hidden py-20">
+      {/* Back button */}
+      <button
+        onClick={() => window.history.back()}
+        className="absolute top-8 left-8 bg-white/30 backdrop-blur-xl rounded-2xl shadow-xl p-3 border border-white/20 hover:-translate-y-1 transition-all duration-200 flex items-center gap-2 z-10"
+      >
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="24" 
+          height="24" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+        >
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+
       {/* Animated background blobs with fixed positioning */}
       <div className="fixed top-0 -left-40 w-[600px] h-[500px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float z-0" />
       <div className="fixed -bottom-32 right-40 w-[600px] h-[600px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-3000 z-0" />
@@ -131,46 +151,300 @@ const [householdRows, setHouseholdRows] = useState([
           {activeTab === "student-details" ? (
             <div className="bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-8 md:p-12 border border-white/20 space-y-6">
               {/* Student Details Form */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-8">
+                {/* Personal Information */}
                 <div>
-                  <label className="block text-sm font-medium text-[#170F49] mb-2">Full Name</label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                    placeholder="Enter student's full name"
-                  />
+                  <h3 className="text-xl font-semibold text-[#170F49] mb-6">Personal Information</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Name of Student</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter student's full name"
+                      />
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Age</label>
+                        <input
+                          type="number"
+                          className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                          placeholder="Age"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-[#170F49] mb-2">Sex</label>
+                        <select className={selectClass}>
+                          <option value="">Select</option>
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                {/* Address Details */}
                 <div>
-                  <label className="block text-sm font-medium text-[#170F49] mb-2">Date of Birth</label>
-                  <input
-                    type="date"
-                    className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                  />
+                  <h3 className="text-xl font-semibold text-[#170F49] mb-6">Address Details</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Birth Place</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter birth place"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">House Name</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter house name"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Street Name</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter street name"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Post Office</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter post office"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Pin Code</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter pin code"
+                        maxLength="6"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Revenue District</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter revenue district"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Block Panchayat</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter block panchayat"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Local Body</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter local body"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Taluk</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter taluk"
+                      />
+                    </div>
+                  </div>
                 </div>
+
+                {/* Additional Details */}
                 <div>
-                  <label className="block text-sm font-medium text-[#170F49] mb-2">Class</label>
-                  <select className={selectClass}>
-                    <option value="">Select class</option>
-                    <option value="X-A">X-A</option>
-                    <option value="X-B">X-B</option>
-                    <option value="X-C">X-C</option>
-                  </select>
+                  <h3 className="text-xl font-semibold text-[#170F49] mb-6">Additional Details</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Aadhar Number</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter aadhar number"
+                        maxLength="12"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Date of Birth</label>
+                      <input
+                        type="date"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Date of Admission</label>
+                      <input
+                        type="date"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Admission Number</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter admission number"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Father's Name</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter father's name"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Mother's Name</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter mother's name"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Religion</label>
+                      <select className={selectClass}>
+                        <option value="">Select religion</option>
+                        <option value="hinduism">Hinduism</option>
+                        <option value="christianity">Christianity</option>
+                        <option value="islam">Islam</option>
+                        <option value="sikhism">Sikhism</option>
+                        <option value="buddhism">Buddhism</option>
+                        <option value="jainism">Jainism</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Caste</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter caste"
+                      />
+                    </div>
+                  </div>
                 </div>
+
+                {/* Disability Details */}
                 <div>
-                  <label className="block text-sm font-medium text-[#170F49] mb-2">Roll Number</label>
-                  <input
-                    type="number"
-                    className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
-                    placeholder="Enter roll number"
-                  />
+                  <h3 className="text-xl font-semibold text-[#170F49] mb-6">Disability Details</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Type of Disability</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter type of disability"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Percentage of Disability</label>
+                      <input
+                        type="number"
+                        min="0"
+                        max="100"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter percentage"
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-[#170F49] mb-2">Address</label>
-                  <textarea
-                    className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
-                    rows="3"
-                    placeholder="Enter address"
-                  ></textarea>
+
+                {/* Bank Details */}
+                <div>
+                  <h3 className="text-xl font-semibold text-[#170F49] mb-6">Bank Details</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Account Number</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter account number"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Bank Name</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter bank name"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">Branch</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter branch name"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#170F49] mb-2">IFSC Code</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300"
+                        placeholder="Enter IFSC code"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Identification Marks */}
+                <div>
+                  <h3 className="text-xl font-semibold text-[#170F49] mb-6">Identification Marks</h3>
+                  <div className="space-y-4">
+                    <textarea
+                      className="w-full px-4 py-3 rounded-xl border bg-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all duration-300 resize-none"
+                      rows="3"
+                      placeholder="Enter identification marks"
+                    ></textarea>
+                  </div>
+                </div>
+
+                {/* Document Upload */}
+                <div>
+                  <h3 className="text-xl font-semibold text-[#170F49] mb-6">Document Upload</h3>
+                  <div className="space-y-4">
+                    <label 
+                      htmlFor="document-upload" 
+                      className="block w-full p-4 border-2 border-dashed border-[#6366f1] rounded-xl text-center cursor-pointer hover:bg-white/50 transition-all duration-200"
+                    >
+                      <svg 
+                        className="mx-auto mb-2" 
+                        width="24" 
+                        height="24" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round"
+                      >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                      </svg>
+                      <span className="text-[#6366f1] font-medium">Upload Documents</span>
+                      <span className="block text-sm text-[#6F6C90] mt-1">Upload relevant documents (PDF format)</span>
+                    </label>
+                    <input type="file" id="document-upload" className="hidden" accept=".pdf" />
+                  </div>
                 </div>
               </div>
             </div>

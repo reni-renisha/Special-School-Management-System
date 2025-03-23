@@ -3,24 +3,30 @@ import { useNavigate } from "react-router-dom";
 
 const AddTeacher = () => {
   const navigate = useNavigate();
-  const [studentData, setStudentData] = useState({
-    fullName: "",
+  const [teacherData, setTeacherData] = useState({
+    name: "",
+    address: "",
     dateOfBirth: "",
     gender: "",
-    phoneNumber: "",
-    email: "",
-    classAssigned: "",
-    divisionAssigned: "",
+    bloodGroup: "",
+    mobileNumber: "",
+    aadharNumber: "",
+    religion: "",
+    caste: "",
+    rciNumber: "",
+    rciRenewalDate: "",
+    qualificationsDetails: "",
+    category: "",
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setStudentData({ ...studentData, [name]: value });
+    setTeacherData({ ...teacherData, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Student Data Submitted: ", studentData);
+    console.log("Teacher Data Submitted: ", teacherData);
     navigate('/headmaster');
   };
 
@@ -64,15 +70,29 @@ const AddTeacher = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2 w-full">
               <label className="block text-sm font-medium text-[#170F49] ml-4">
-                Full Name
+                Name
               </label>
               <input
                 type="text"
-                name="fullName"
-                value={studentData.fullName}
+                name="name"
+                value={teacherData.name}
                 onChange={handleInputChange}
-                placeholder="Enter your Name"
+                placeholder="Enter Name"
                 className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
+                required
+              />
+            </div>
+
+            <div className="space-y-2 w-full">
+              <label className="block text-sm font-medium text-[#170F49] ml-4">
+                Address
+              </label>
+              <textarea
+                name="address"
+                value={teacherData.address}
+                onChange={handleInputChange}
+                placeholder="Enter Address"
+                className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90] min-h-[100px]"
                 required
               />
             </div>
@@ -85,7 +105,7 @@ const AddTeacher = () => {
                 <input
                   type="date"
                   name="dateOfBirth"
-                  value={studentData.dateOfBirth}
+                  value={teacherData.dateOfBirth}
                   onChange={handleInputChange}
                   className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all text-[#6F6C90]"
                   required
@@ -97,7 +117,7 @@ const AddTeacher = () => {
                 </label>
                 <select
                   name="gender"
-                  value={studentData.gender}
+                  value={teacherData.gender}
                   onChange={handleInputChange}
                   className={selectClassName}
                   required
@@ -110,66 +130,153 @@ const AddTeacher = () => {
               </div>
             </div>
 
-            <div className="space-y-2 w-full">
-              <label className="block text-sm font-medium text-[#170F49] ml-4">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                name="phoneNumber"
-                value={studentData.phoneNumber}
-                onChange={handleInputChange}
-                placeholder="Enter Phone Number"
-                className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
-                required
-              />
-            </div>
-
-            <div className="space-y-2 w-full">
-              <label className="block text-sm font-medium text-[#170F49] ml-4">
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={studentData.email}
-                onChange={handleInputChange}
-                placeholder="Enter your Email"
-                className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
-                required
-              />
-            </div>
-
-            <div className="space-y-2 w-full">
-              <label className="block text-sm font-medium text-[#170F49] ml-4">
-                Class Assigned
-              </label>
-              <div className="flex gap-2">
+            <div className="flex gap-4">
+              <div className="flex-1 space-y-2">
+                <label className="block text-sm font-medium text-[#170F49] ml-4">
+                  Blood Group
+                </label>
                 <select
-                  name="classAssigned"
-                  value={studentData.classAssigned}
+                  name="bloodGroup"
+                  value={teacherData.bloodGroup}
                   onChange={handleInputChange}
                   className={selectClassName}
                   required
                 >
-                  <option value="">Class</option>
-                  {Array.from({ length: 10 }, (_, i) => (
-                    <option key={i + 1} value={i + 1}>{`Class ${i + 1}`}</option>
-                  ))}
-                </select>
-                <select
-                  name="divisionAssigned"
-                  value={studentData.divisionAssigned}
-                  onChange={handleInputChange}
-                  className={selectClassName}
-                  required
-                >
-                  <option value="">Division</option>
-                  {["A", "B", "C", "D"].map((division) => (
-                    <option key={division} value={division}>{division}</option>
-                  ))}
+                  <option value="">Select Blood Group</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
                 </select>
               </div>
+              <div className="flex-1 space-y-2">
+                <label className="block text-sm font-medium text-[#170F49] ml-4">
+                  Mobile Number
+                </label>
+                <input
+                  type="tel"
+                  name="mobileNumber"
+                  value={teacherData.mobileNumber}
+                  onChange={handleInputChange}
+                  placeholder="Enter Mobile Number"
+                  className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2 w-full">
+              <label className="block text-sm font-medium text-[#170F49] ml-4">
+                Aadhar Number
+              </label>
+              <input
+                type="text"
+                name="aadharNumber"
+                value={teacherData.aadharNumber}
+                onChange={handleInputChange}
+                placeholder="Enter Aadhar Number"
+                className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
+                required
+              />
+            </div>
+
+            <div className="flex gap-4">
+              <div className="flex-1 space-y-2">
+                <label className="block text-sm font-medium text-[#170F49] ml-4">
+                  Religion
+                </label>
+                <input
+                  type="text"
+                  name="religion"
+                  value={teacherData.religion}
+                  onChange={handleInputChange}
+                  placeholder="Enter Religion"
+                  className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
+                  required
+                />
+              </div>
+              <div className="flex-1 space-y-2">
+                <label className="block text-sm font-medium text-[#170F49] ml-4">
+                  Caste
+                </label>
+                <input
+                  type="text"
+                  name="caste"
+                  value={teacherData.caste}
+                  onChange={handleInputChange}
+                  placeholder="Enter Caste"
+                  className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <div className="flex-1 space-y-2">
+                <label className="block text-sm font-medium text-[#170F49] ml-4">
+                  RCI Number
+                </label>
+                <input
+                  type="text"
+                  name="rciNumber"
+                  value={teacherData.rciNumber}
+                  onChange={handleInputChange}
+                  placeholder="Enter RCI Number"
+                  className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
+                  required
+                />
+              </div>
+              <div className="flex-1 space-y-2">
+                <label className="block text-sm font-medium text-[#170F49] ml-4">
+                  RCI Renewal Date
+                </label>
+                <input
+                  type="date"
+                  name="rciRenewalDate"
+                  value={teacherData.rciRenewalDate}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all text-[#6F6C90]"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2 w-full">
+              <label className="block text-sm font-medium text-[#170F49] ml-4">
+                Qualifications Details
+              </label>
+              <textarea
+                name="qualificationsDetails"
+                value={teacherData.qualificationsDetails}
+                onChange={handleInputChange}
+                placeholder="Enter Qualifications Details"
+                className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90] min-h-[100px]"
+                required
+              />
+            </div>
+
+            <div className="space-y-2 w-full">
+              <label className="block text-sm font-medium text-[#170F49] ml-4">
+                Category
+              </label>
+              <select
+                name="category"
+                value={teacherData.category}
+                onChange={handleInputChange}
+                className={selectClassName}
+                required
+              >
+                <option value="">Select Category</option>
+                <option value="General">General</option>
+                <option value="OBC">OBC</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
 
             <button

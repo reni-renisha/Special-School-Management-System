@@ -44,6 +44,11 @@ const HeadMaster = () => {
     navigate(`/student/${studentId}`);
   };
 
+  // Add this function to handle navigation to TeacherPage
+  const handleTeacherClick = (teacherId) => {
+    navigate(`/teacher/${teacherId}`);
+  };
+
   return (
     <div className="min-h-screen w-full flex flex-col items-center bg-[#f7f7f7] relative overflow-x-hidden py-20">
       {/* Update Logout Button */}
@@ -243,9 +248,15 @@ const HeadMaster = () => {
                               className="w-full px-4 py-2.5 text-sm text-[#170F49] bg-white rounded-lg border border-gray-200 hover:border-[#6366f1] focus:outline-none focus:border-[#6366f1] transition-all duration-200"
                             >
                               <option value="all">All Classes</option>
-                              <option value="X-A">X-A</option>
-                              <option value="X-B">X-B</option>
-                              <option value="X-C">X-C</option>
+                              <option value="preprimary">PrePrimary</option>
+                              <option value="primary1">Primary 1</option>
+                              <option value="primary2">Primary 2</option>
+                              <option value="secondary">Secondary</option>
+                              <option value="prevocational1">Pre vocational 1</option>
+                              <option value="prevocational2">Pre vocational 2</option>
+                              <option value="caregroup-below-18">Care group below 18 years</option>
+                              <option value="caregroup-above-18">Care group Above 18 years</option>
+                              <option value="vocational">Vocational 18-35 years</option>
                             </select>
                           )}
                         </div>
@@ -259,7 +270,7 @@ const HeadMaster = () => {
               <div className="grid grid-cols-1 gap-4 px-4">
                 {/* Add Malavika's card at the top */}
                 <div 
-                  onClick={() => handleStudentClick('student-id')}
+                  onClick={() => handleStudentClick('malavika')}
                   className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
                 >
                   <div className="flex items-center space-x-4 text-[#170F49]">
@@ -277,7 +288,7 @@ const HeadMaster = () => {
                       <h3 className="text-lg font-semibold text-[#170F49]">Malavika</h3>
                       <div className="space-y-1">
                         <p className="text-sm text-[#6F6C8F]">
-                          <span className="font-medium">Class:</span> X-A
+                          <span className="font-medium">Class:</span> Primary 1
                         </p>
                         <p className="text-sm text-[#6F6C8F]">
                           <span className="font-medium">Roll No:</span> 33
@@ -294,7 +305,7 @@ const HeadMaster = () => {
 
                 {/* Add Renisha's card */}
                 <div 
-                  onClick={() => handleStudentClick('student-id')}
+                  onClick={() => handleStudentClick('renisha')}
                   className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
                 >
                   <div className="flex items-center space-x-4 text-[#170F49]">
@@ -329,7 +340,7 @@ const HeadMaster = () => {
 
                 {/* Add Lydia's card */}
                 <div 
-                  onClick={() => handleStudentClick('student-id')}
+                  onClick={() => handleStudentClick('lydia')}
                   className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
                 >
                   <div className="flex items-center space-x-4 text-[#170F49]">
@@ -364,7 +375,7 @@ const HeadMaster = () => {
 
                 {/* Add Sreedhanya's card */}
                 <div 
-                  onClick={() => handleStudentClick('student-id')}
+                  onClick={() => handleStudentClick('sreedhanya')}
                   className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
                 >
                   <div className="flex items-center space-x-4 text-[#170F49]">
@@ -445,7 +456,7 @@ const HeadMaster = () => {
               <div className="grid grid-cols-1 gap-4 px-4">
                 {/*Teacher Card 1*/}
                 <div 
-                  onClick={() => handleStudentClick('teacher-id')}
+                  onClick={() => handleTeacherClick('arjun-jayakumar')}
                   className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
                 >
                   <div className="flex items-center space-x-4 text-[#170F49]">
@@ -477,7 +488,7 @@ const HeadMaster = () => {
                 </div>
                 {/*Teacher Card 2*/}
                 <div 
-                  onClick={() => handleStudentClick('teacher-id')}
+                  onClick={() => handleTeacherClick('aditya-s-nair')}
                   className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
                 >
                   <div className="flex items-center space-x-4 text-[#170F49]">
@@ -508,7 +519,7 @@ const HeadMaster = () => {
                 </div>
                 {/*Teacher Card 3*/}
                 <div 
-                  onClick={() => handleStudentClick('teacher-id')}
+                  onClick={() => handleTeacherClick('abhiram-krishna')}
                   className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
                 >
                   <div className="flex items-center space-x-4 text-[#170F49]">
@@ -539,7 +550,7 @@ const HeadMaster = () => {
                 </div>
                 {/*Teacher Card 4*/}
                 <div 
-                  onClick={() => handleStudentClick('teacher-id')}
+                  onClick={() => handleTeacherClick('faheem-mohammed')}
                   className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
                 >
                   <div className="flex items-center space-x-4 text-[#170F49]">
