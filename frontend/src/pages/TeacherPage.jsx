@@ -12,8 +12,33 @@ const TeacherPage = () => {
     const fetchTeacher = async () => {
       try {
         const response = await axios.get(`http://localhost:8000/teachers/${id}`);
+        
+        // Map API response to the format expected by the UI
         setTeacher({
-          ...response.data,
+          name: response.data.name,
+          teacherId: response.data.id,
+          dob: new Date(response.data.date_of_birth).toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          }),
+          gender: response.data.gender,
+          religion: response.data.religion,
+          caste: response.data.caste,
+          mobile: response.data.mobile_number,
+          email: response.data.email || 'Not provided',
+          address: response.data.address,
+          aadhar: response.data.aadhar_number,
+          bloodGroup: response.data.blood_group,
+          category: response.data.category,
+          rciNumber: response.data.rci_number,
+          rciRenewalDate: new Date(response.data.rci_renewal_date).toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          }),
+          qualifications: response.data.qualifications_details,
+          // Adding mock classes data since it's not in the database yet
           classes: [
             { class: 'Class X-A', subject: 'Mathematics', days: 'Monday, Wednesday, Friday', timing: '9:00 AM - 10:00 AM' },
             { class: 'Class IX-B', subject: 'Mathematics', days: 'Tuesday, Thursday', timing: '10:15 AM - 11:15 AM' }
