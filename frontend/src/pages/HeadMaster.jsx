@@ -30,7 +30,7 @@ const HeadMaster = () => {
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/teachers/');
+        const response = await axios.get('http://localhost:8000/api/v1/teachers/');
         setTeachers(response.data);
         setLoading(false);
       } catch (error) {

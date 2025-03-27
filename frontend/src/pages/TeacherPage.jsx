@@ -11,7 +11,7 @@ const TeacherPage = () => {
   useEffect(() => {
     const fetchTeacher = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/teachers/${id}`);
+        const response = await axios.get(`http://localhost:8000/api/v1/teachers/${id}`);
         
         // Map API response to the format expected by the UI
         setTeacher({

@@ -28,7 +28,7 @@ const AddTeacher = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8000/teachers/', teacherData);
+      await axios.post('http://localhost:8000/api/v1/teachers/', teacherData);
       navigate('/headmaster');
     } catch (error) {
       console.error('Error adding teacher:', error);
