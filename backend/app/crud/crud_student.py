@@ -5,7 +5,6 @@ from datetime import date
 
 from app.models.student import Student
 from app.schemas.student import StudentCreate, StudentUpdate
-from app.crud.base import CRUDBase
 
 def get_student(db: Session, student_id: int) -> Optional[Student]:
     return db.query(Student).filter(Student.id == student_id).first()
@@ -78,22 +77,4 @@ def delete_student(db: Session, student_id: int) -> bool:
         
     db.delete(db_student)
     db.commit()
-    return True
-
-# Create a CRUD object that matches the style of crud_user.py
-class CRUDStudent(CRUDBase[Student, StudentCreate, StudentUpdate]):
-    def get_by_admission_number(self, db: Session, *, admission_number: str) -> Optional[Student]:
-        return db.query(Student).filter(Student.admission_number == admission_number).first()
-        
-    def get_filtered(
-        self, 
-        db: Session, 
-        *, 
-        skip: int = 0, 
-        limit: int = 100,
-        search: Optional[str] = None,
-        class_name: Optional[str] = None
-    ) -> List[Student]:
-        return get_students(db, skip=skip, limit=limit, search=search, class_name=class_name)
-    
-student = CRUDStudent(Student) 
+    return True 

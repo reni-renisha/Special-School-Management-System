@@ -11,6 +11,7 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 # Import all models here
 from app.models.student import Student  # Import the Student model explicitly
 from app.models.teacher import Teacher  # Import the Teacher model explicitly
+from app.models.user import User  # Import the User model explicitly
 from app.db.session import Base
 from app.core.config import settings
 

@@ -69,6 +69,11 @@ const HeadMaster = () => {
     navigate(`/teacher/${teacherId}`);
   };
 
+  // Add this function to handle navigation to AddUser
+  const handleAddUserClick = () => {
+    navigate('/add-user');
+  };
+
   return (
     <div className="min-h-screen w-full flex flex-col items-center bg-[#f7f7f7] relative overflow-x-hidden py-20">
       {/* Update Logout Button */}
@@ -90,6 +95,26 @@ const HeadMaster = () => {
             />
           </svg>
           Logout
+        </button>
+      </div>
+
+      {/* Add User Button */}
+      <div className="fixed top-6 left-6 z-50">
+        <button
+          onClick={handleAddUserClick}
+          className="px-6 py-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105 flex items-center gap-2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"
+            />
+          </svg>
+          Add User
         </button>
       </div>
 

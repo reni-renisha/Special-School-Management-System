@@ -2,41 +2,55 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const LoginPage = () => {
+const AddUser = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: ""
+  });
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!username || !password) {
-      setError("Please fill out both fields.");
-      return;
-    }
+    setError("");
+    setSuccess("");
 
     try {
-      const formData = new FormData();
-      formData.append("username", username);
-      formData.append("password", password);
-
-      const response = await axios.post("http://localhost:8000/api/v1/auth/login", formData);
-      
-      if (response.data.access_token) {
-        // Store the token in localStorage
-        localStorage.setItem("token", response.data.access_token);
-        // Set the default authorization header for future requests
-        axios.defaults.headers.common["Authorization"] = `Bearer ${response.data.access_token}`;
-        
-        // Redirect based on user role
-        if (response.data.role === "admin") {
-          navigate('/headmaster');
-        } else {
-          navigate('/teacher');
-        }
+      // Get the token from localStorage
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setError("You must be logged in to add users");
+        return;
       }
+
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/users/teachers",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      setSuccess("Teacher user created successfully!");
+      setFormData({
+        username: "",
+        email: "",
+        password: ""
+      });
     } catch (err) {
-      setError(err.response?.data?.detail || "An error occurred during login.");
+      setError(err.response?.data?.detail || "An error occurred while creating the user");
     }
   };
 
@@ -47,17 +61,43 @@ const LoginPage = () => {
       <div className="absolute -bottom-32 right-40 w-[600px] h-[600px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-3000" />
       <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-float animation-delay-5000" />
       <div className="absolute top-0 -left-40 w-[500px] h-[600px] bg-[#3730a3] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-float animation-delay-7000" />
+
+      {/* Back Button */}
+      <div className="absolute top-6 left-6 z-50">
+        <button
+          onClick={() => navigate('/headmaster')}
+          className="px-6 py-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105 flex items-center gap-2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
+          Back
+        </button>
+      </div>
       
       <div className="w-[90%] max-w-[1200px] mx-4 flex-1 flex flex-col justify-center">
         <h1 className="text-3xl font-bold text-[#170F49] mb-8 text-center font-baskervville">
-          Sign in to your account
+          Add Teacher User
         </h1>
         
-        {/* Login container */}
+        {/* Form container */}
         <div className="relative bg-white/30 backdrop-blur-xl rounded-3xl shadow-xl p-8 md:p-12 border border-white/20 max-w-[450px] mx-auto w-full">
           <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
               <p className="text-red-500 text-sm mb-4">{error}</p>
+            )}
+            
+            {success && (
+              <p className="text-green-500 text-sm mb-4">{success}</p>
             )}
             
             {/* Username field */}
@@ -70,11 +110,33 @@ const LoginPage = () => {
               </label>
               <input
                 id="username"
+                name="username"
                 type="text"
-                placeholder="Enter username here."
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={formData.username}
+                onChange={handleChange}
+                placeholder="Enter username"
                 className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
+                required
+              />
+            </div>
+            
+            {/* Email field */}
+            <div className="space-y-2 w-full">
+              <label 
+                htmlFor="email" 
+                className="block text-sm font-medium text-[#170F49] ml-4"
+              >
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter email address"
+                className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
+                required
               />
             </div>
             
@@ -88,11 +150,13 @@ const LoginPage = () => {
               </label>
               <input
                 id="password"
+                name="password"
                 type="password"
-                placeholder="Enter password here."
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Enter password"
                 className="w-full px-4 py-4 rounded-2xl border bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6366f1] transition-all placeholder:text-[#6F6C90]"
+                required
               />
             </div>
             
@@ -102,14 +166,9 @@ const LoginPage = () => {
               className="w-full bg-[#6366f1] text-white py-4 rounded-2xl hover:bg-[#4f46e5] hover:-translate-y-1 transition-all duration-200 font-medium 
               shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)]"
             >
-              Sign in
+              Create Teacher User
             </button>
           </form>
-          
-          {/* Info text */}
-          <p className="text-[#6F6C8F] text-xs text-center mt-6">
-            No account? Contact administrator to manage access.
-          </p>
         </div>
       </div>
 
@@ -149,4 +208,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default AddUser; 
