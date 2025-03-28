@@ -1,86 +1,13 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
-from typing import List, Optional
+from typing import List, Optional, Dict, Any, Union
 from datetime import date
 
 from app.models.student import Student
 from app.schemas.student import StudentCreate, StudentUpdate
 from app.crud.base import CRUDBase
+from app.utils.date_utils import get_today, generate_id_with_year_prefix
 
-def get_student(db: Session, student_id: int) -> Optional[Student]:
-    return db.query(Student).filter(Student.id == student_id).first()
-
-def get_student_by_admission_number(db: Session, admission_number: str) -> Optional[Student]:
-    return db.query(Student).filter(Student.admission_number == admission_number).first()
-
-def get_students(
-    db: Session, 
-    skip: int = 0, 
-    limit: int = 100,
-    search: Optional[str] = None,
-    class_name: Optional[str] = None
-) -> List[Student]:
-    query = db.query(Student)
-    
-    if search:
-        search_filter = or_(
-            Student.name.ilike(f"%{search}%"),
-            Student.admission_number.ilike(f"%{search}%"),
-            Student.student_id.ilike(f"%{search}%")
-        )
-        query = query.filter(search_filter)
-    
-    if class_name:
-        query = query.filter(Student.class_name == class_name)
-    
-    return query.offset(skip).limit(limit).all()
-
-def create_student(db: Session, student: StudentCreate) -> Student:
-    # Generate student_id (you can implement your own logic)
-    current_year = date.today().year
-    count = db.query(Student).count()
-    student_id = f"STU{current_year}{str(count + 1).zfill(3)}"
-    
-    db_student = Student(
-        student_id=student_id,
-        created_at=date.today(),
-        updated_at=date.today(),
-        **student.dict()
-    )
-    db.add(db_student)
-    db.commit()
-    db.refresh(db_student)
-    return db_student
-
-def update_student(
-    db: Session, 
-    student_id: int, 
-    student_update: StudentUpdate
-) -> Optional[Student]:
-    db_student = get_student(db, student_id)
-    if not db_student:
-        return None
-        
-    update_data = student_update.dict(exclude_unset=True)
-    update_data["updated_at"] = date.today()
-    
-    for field, value in update_data.items():
-        setattr(db_student, field, value)
-    
-    db.commit()
-    db.refresh(db_student)
-    return db_student
-
-def delete_student(db: Session, student_id: int) -> bool:
-    db_student = get_student(db, student_id)
-    if not db_student:
-        return False
-        
-    db.delete(db_student)
-    db.commit()
-    return True
-
-# Create a CRUD object that matches the style of crud_user.py
 class CRUDStudent(CRUDBase[Student, StudentCreate, StudentUpdate]):
     def get_by_admission_number(self, db: Session, *, admission_number: str) -> Optional[Student]:
         return db.query(Student).filter(Student.admission_number == admission_number).first()
@@ -94,6 +21,53 @@ class CRUDStudent(CRUDBase[Student, StudentCreate, StudentUpdate]):
         search: Optional[str] = None,
         class_name: Optional[str] = None
     ) -> List[Student]:
-        return get_students(db, skip=skip, limit=limit, search=search, class_name=class_name)
+        query = db.query(Student)
+        
+        if search:
+            search_filter = or_(
+                Student.name.ilike(f"%{search}%"),
+                Student.admission_number.ilike(f"%{search}%"),
+                Student.student_id.ilike(f"%{search}%")
+            )
+            query = query.filter(search_filter)
+        
+        if class_name:
+            query = query.filter(Student.class_name == class_name)
+        
+        return query.offset(skip).limit(limit).all()
     
+    def create(self, db: Session, *, obj_in: StudentCreate) -> Student:
+        # Generate student_id
+        count = db.query(Student).count()
+        student_id = generate_id_with_year_prefix("STU", count + 1)
+        
+        obj_in_data = obj_in.model_dump()
+        today = get_today()
+        db_obj = Student(
+            student_id=student_id,
+            created_at=today,
+            updated_at=today,
+            **obj_in_data
+        )
+        db.add(db_obj)
+        db.commit()
+        db.refresh(db_obj)
+        return db_obj
+    
+    def update(
+        self,
+        db: Session,
+        *,
+        db_obj: Student,
+        obj_in: Union[StudentUpdate, Dict[str, Any]]
+    ) -> Student:
+        if isinstance(obj_in, dict):
+            update_data = obj_in
+        else:
+            update_data = obj_in.model_dump(exclude_unset=True)
+        
+        update_data["updated_at"] = get_today()
+        
+        return super().update(db, db_obj=db_obj, obj_in=update_data)
+
 student = CRUDStudent(Student) 

@@ -2,47 +2,68 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from typing import List, Optional
 
-from app.crud import student as student_crud
+from app.crud.student import student
 from app.schemas.student import Student, StudentCreate, StudentUpdate
 from app.db.session import get_db
+from app.utils.pagination import PageParams, Page
 
 router = APIRouter()
 
-@router.get("/", response_model=List[Student])
+@router.get("/", response_model=Page[Student])
 def read_students(
     db: Session = Depends(get_db),
-    skip: int = 0,
-    limit: int = 100,
+    pagination: PageParams = Depends(),
     search: Optional[str] = None,
     class_name: Optional[str] = None
 ):
     """
-    Retrieve students with optional search and filtering.
+    Retrieve students with optional search, filtering, and pagination.
     """
-    students = student_crud.get_students(
+    students = student.get_filtered(
         db, 
-        skip=skip, 
-        limit=limit,
+        skip=pagination.skip, 
+        limit=pagination.page_size,
         search=search,
         class_name=class_name
     )
-    return students
+    
+    # Get the total count for pagination
+    query = db.query(student.model)
+    if search:
+        from sqlalchemy import or_
+        search_filter = or_(
+            student.model.name.ilike(f"%{search}%"),
+            student.model.admission_number.ilike(f"%{search}%"),
+            student.model.student_id.ilike(f"%{search}%")
+        )
+        query = query.filter(search_filter)
+    
+    if class_name:
+        query = query.filter(student.model.class_name == class_name)
+        
+    total = query.count()
+    
+    return Page.create(
+        items=students,
+        total=total,
+        params=pagination
+    )
 
 @router.post("/", response_model=Student)
 def create_student(
-    student: StudentCreate,
+    student_in: StudentCreate,
     db: Session = Depends(get_db)
 ):
     """
     Create a new student.
     """
-    db_student = student_crud.get_student_by_admission_number(db, admission_number=student.admission_number)
+    db_student = student.get_by_admission_number(db, admission_number=student_in.admission_number)
     if db_student:
         raise HTTPException(
             status_code=400,
             detail="Student with this admission number already exists"
         )
-    return student_crud.create_student(db=db, student=student)
+    return student.create(db=db, obj_in=student_in)
 
 @router.get("/{student_id}", response_model=Student)
 def read_student(
@@ -52,7 +73,7 @@ def read_student(
     """
     Get a specific student by ID.
     """
-    db_student = student_crud.get_student(db, student_id=student_id)
+    db_student = student.get(db, id=student_id)
     if db_student is None:
         raise HTTPException(status_code=404, detail="Student not found")
     return db_student
@@ -60,15 +81,16 @@ def read_student(
 @router.put("/{student_id}", response_model=Student)
 def update_student(
     student_id: int,
-    student: StudentUpdate,
+    student_update: StudentUpdate,
     db: Session = Depends(get_db)
 ):
     """
     Update a student's information.
     """
-    db_student = student_crud.update_student(db, student_id=student_id, student_update=student)
+    db_student = student.get(db, id=student_id)
     if db_student is None:
         raise HTTPException(status_code=404, detail="Student not found")
+    db_student = student.update(db=db, db_obj=db_student, obj_in=student_update)
     return db_student
 
 @router.delete("/{student_id}")
@@ -79,7 +101,8 @@ def delete_student(
     """
     Delete a student.
     """
-    success = student_crud.delete_student(db, student_id=student_id)
-    if not success:
+    db_student = student.get(db, id=student_id)
+    if db_student is None:
         raise HTTPException(status_code=404, detail="Student not found")
+    student.remove(db=db, id=student_id)
     return {"message": "Student successfully deleted"} 

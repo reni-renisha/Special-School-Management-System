@@ -129,61 +129,83 @@ const TeacherDashboard = () => {
                 />
               </svg>
             </div>
-
-            <div className="relative">
-              <button 
-                onClick={() => setShowFilterDropdown(!showFilterDropdown)}
-                className="p-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105"
+            
+            <div className="flex items-center gap-3">
+              {/* Add Student Button */}
+              <button
+                onClick={() => navigate('/add-student')}
+                className="px-5 py-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105 flex items-center gap-2"
               >
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  className="h-5 w-5" 
-                  viewBox="0 0 20 20" 
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
                   fill="currentColor"
                 >
-                  <path fillRule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clipRule="evenodd" />
+                  <path
+                    fillRule="evenodd"
+                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                    clipRule="evenodd"
+                  />
                 </svg>
+                Add Student
               </button>
 
-              {/* Filter Dropdown Menu */}
-              {showFilterDropdown && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg overflow-hidden z-50">
-                  <div className="p-2 space-y-2">
-                    <select
-                      value={filterOption}
-                      onChange={(e) => {
-                        setFilterOption(e.target.value);
-                      }}
-                      className="w-full px-4 py-2.5 text-sm text-[#170F49] bg-white rounded-lg border border-gray-200 hover:border-[#6366f1] focus:outline-none focus:border-[#6366f1] transition-all duration-200"
-                    >
-                      <option value="all">All Students</option>
-                      <option value="class">Class</option>
-                    </select>
-                    
-                    {filterOption === 'class' && (
+              <div className="relative">
+                <button 
+                  onClick={() => setShowFilterDropdown(!showFilterDropdown)}
+                  className="p-3 bg-[#6366f1] text-white rounded-xl hover:bg-[#4f46e5] transition-all duration-200 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:scale-105"
+                >
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-5 w-5" 
+                    viewBox="0 0 20 20" 
+                    fill="currentColor"
+                  >
+                    <path fillRule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clipRule="evenodd" />
+                  </svg>
+                </button>
+
+                {/* Filter Dropdown Menu */}
+                {showFilterDropdown && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg overflow-hidden z-50">
+                    <div className="p-2 space-y-2">
                       <select
-                        value={selectedClass}
+                        value={filterOption}
                         onChange={(e) => {
-                          setSelectedClass(e.target.value);
-                          setShowFilterDropdown(false);
+                          setFilterOption(e.target.value);
                         }}
                         className="w-full px-4 py-2.5 text-sm text-[#170F49] bg-white rounded-lg border border-gray-200 hover:border-[#6366f1] focus:outline-none focus:border-[#6366f1] transition-all duration-200"
                       >
-                        <option value="all">All Classes</option>
-                        <option value="preprimary">PrePrimary</option>
-                        <option value="primary1">Primary 1</option>
-                        <option value="primary2">Primary 2</option>
-                        <option value="secondary">Secondary</option>
-                        <option value="prevocational1">Pre vocational 1</option>
-                        <option value="prevocational2">Pre vocational 2</option>
-                        <option value="caregroup-below-18">Care group below 18 years</option>
-                        <option value="caregroup-above-18">Care group Above 18 years</option>
-                        <option value="vocational">Vocational 18-35 years</option>
+                        <option value="all">All Students</option>
+                        <option value="class">Class</option>
                       </select>
-                    )}
+                      
+                      {filterOption === 'class' && (
+                        <select
+                          value={selectedClass}
+                          onChange={(e) => {
+                            setSelectedClass(e.target.value);
+                            setShowFilterDropdown(false);
+                          }}
+                          className="w-full px-4 py-2.5 text-sm text-[#170F49] bg-white rounded-lg border border-gray-200 hover:border-[#6366f1] focus:outline-none focus:border-[#6366f1] transition-all duration-200"
+                        >
+                          <option value="all">All Classes</option>
+                          <option value="preprimary">PrePrimary</option>
+                          <option value="primary1">Primary 1</option>
+                          <option value="primary2">Primary 2</option>
+                          <option value="secondary">Secondary</option>
+                          <option value="prevocational1">Pre vocational 1</option>
+                          <option value="prevocational2">Pre vocational 2</option>
+                          <option value="caregroup-below-18">Care group below 18 years</option>
+                          <option value="caregroup-above-18">Care group Above 18 years</option>
+                          <option value="vocational">Vocational 18-35 years</option>
+                        </select>
+                      )}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
             
