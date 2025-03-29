@@ -1,0 +1,172 @@
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+# build/ # Note: Also used by frontend
+develop-eggs/
+# dist/ # Note: Also used by frontend
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.env
+.venv/
+
+# Django stuff
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff
+instance/
+.webassets-cache
+
+# FastAPI
+.pytest_cache
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+.atom/
+.tmproj
+
+# OS specific files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Frontend General
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# --------------------- Python ---------------------
+# *.egg-info/ # Duplicate
+# .pytest_cache/ # Duplicate
+# .coverage # Duplicate below
+# htmlcov/ # Duplicate below
+.python-version
+
+# --------------------- Virtual Environment ---------------------
+# venv/ # Duplicate
+# env/ # Duplicate
+# ENV/ # Duplicate
+# .env # Duplicate
+# .venv/ # Duplicate
+
+# --------------------- Database ---------------------
+*.sqlite3
+*.db
+*.sqlite
+
+# --------------------- Logs ---------------------
+logs/
+*.log
+# npm-debug.log* # Duplicate
+# yarn-debug.log* # Duplicate
+# yarn-error.log* # Duplicate
+
+# --------------------- IDE specific files ---------------------
+# .idea/ # Duplicate
+# .vscode/ # Duplicate
+# *.swp # Duplicate
+# *.swo # Duplicate
+# .DS_Store # Duplicate
+# *.sublime-project # Duplicate
+# *.sublime-workspace # Duplicate
+# .atom/ # Duplicate
+# .tmproj # Duplicate
+
+# --------------------- FastAPI specific ---------------------
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --------------------- Frontend General ---------------------
+# Node modules
+node_modules/
+# Build files
+build/
+dist/
+# Cache
+.cache/
+.parcel-cache/
+.npm
+
+# --------------------- JWT and secret keys ---------------------
+# Uncomment if needed
+# *.pem
+# *.key
+# secrets.json
+
+# --------------------- Debug files ---------------------
+debug/
+coverage/
+
+# --------------------- Temporary files ---------------------
+.tmp/
+.temp/
+*.tmp
+*.temp
+
+# --------------------- Alembic migrations ---------------------
+# Uncomment if you want to include migrations
+# migrations/versions/
+
+# ============================================================
+# Added from backend/.gitignore (Consolidated 2025-03-29)
+# ============================================================
+backend/.env.local
+backend/.env.development
+backend/.env.test
+backend/.env.production
+backend/alembic/versions/__pycache__/
+backend/migrations/versions/__pycache__/
+backend/docs/_build/
+backend/docs/api/
+# Note: Most other rules from backend/.gitignore were already covered above or are general.
+
+# ============================================================
+# Added from frontend/.gitignore (Consolidated 2025-03-29)
+# ============================================================
+frontend/node_modules/
+frontend/.pnp
+frontend/.pnp.js
+frontend/coverage/
+frontend/build/
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+# Note: Most other rules from frontend/.gitignore were already covered above or are general.
