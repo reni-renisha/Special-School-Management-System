@@ -1,6 +1,5 @@
 # Getting Started with Create React App 
-#practise test for git
-#practise test for cursor
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
